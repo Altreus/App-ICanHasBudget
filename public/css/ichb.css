@@ -40,17 +40,8 @@ div.content {
 .kitty .kitty-type {
     float: right;
     color: #178844;
-    /*
-    color: #0E2A77;
-    border: 0.2rem solid #5576D0;
-    background: #8499D0;
-    */
     font-size: 5.0rem;
-    padding: 1.5rem 1.7rem;
     line-height: 5.0rem;
-    /*
-    box-shadow: 0.5rem 0.5rem 1rem 0px rgba(0,0,0,0.25);
-    */
 }
 
 .kitty h1 {
@@ -59,10 +50,10 @@ div.content {
 
 .kitty p.budgeted {
     font-size: 3.0rem;
+    overflow: hidden;
 }
 
 .kitty p.budgeted span {
-    overflow: hidden;
 }
 
 .kitty p.budgeted .spent {
@@ -91,4 +82,22 @@ header.used-60 .budgeted .earmarked {
     display: inline-block;
     text-align: left;
     color: #033B51;
+}
+
+div.buttons {
+    margin-left: 2rem;
+    position: relative;
+    top: -1rem;
+}
+
+div.buttons, div.buttons button {
+    display: inline-block;
+    font-size: 2rem;
+}
+
+div.buttons button {
+    padding: 0.4rem 1.5rem;
+    background: #033B51;
+    color: #7DB7CD;
+    height: initial;
 }

@@ -3,51 +3,47 @@
 <section class="row">
     <div class="kitty twelve columns">
         <header class="used-60">
-            <div class="progress-bar">&nbsp;</div>
             <h1>Household</h1>
-            <p class="budgeted">
-                <span class="spent">£200</span>/<span class="earmarked">£300</span>
-            </p>
             <a href="" title="Target" class="kitty-type">
                 <i class="fa fa-crosshairs"></i>
             </a>
+            <p class="budgeted">
+                <span class="spent">£200</span>/<span class="earmarked">£300</span>
+            </p>
         </header>
 
         <div class="row">
             <div class="kitty twelve columns">
                 <header class="used-60">
-                    <div class="progress-bar">&nbsp;</div>
                     <h1>Groceries</h1>
-                    <p class="budgeted">
-                        <span class="spent">£200</span>/<span class="earmarked">£300</span>
-                    </p>
                     <a href="" title="Budget" class="kitty-type">
                         <i class="fa fa-bitcoin"></i>
                     </a>
+                    <p class="budgeted">
+                        <span class="spent">£200</span>/<span class="earmarked">£300</span>
+                    </p>
                 </header>
             </div>
             <div class="kitty twelve columns">
                 <header class="used-60">
-                    <div class="progress-bar">&nbsp;</div>
                     <h1>Cleaning Surprise</h1>
-                    <p class="budgeted">
-                        <span class="spent">£200</span>/<span class="earmarked">£300</span>
-                    </p>
                     <a href="" title="Budget" class="kitty-type">
                         <i class="fa fa-bitcoin"></i>
                     </a>
+                    <p class="budgeted">
+                        <span class="spent">£200</span>/<span class="earmarked">£300</span>
+                    </p>
                 </header>
             </div>
             <div class="kitty twelve columns">
                 <header class="used-60">
-                    <div class="progress-bar">&nbsp;</div>
                     <h1>Car &amp; Bike</h1>
-                    <p class="budgeted">
-                        <span class="spent">£200</span>/<span class="earmarked">£300</span>
-                    </p>
                     <a href="" title="Budget" class="kitty-type">
                         <i class="fa fa-bitcoin"></i>
                     </a>
+                    <p class="budgeted">
+                        <span class="spent">£200</span>/<span class="earmarked">£300</span>
+                    </p>
                 </header>
             </div>
         </div>

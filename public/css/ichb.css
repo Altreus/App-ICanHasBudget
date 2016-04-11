@@ -58,11 +58,14 @@ div.content {
 }
 
 .kitty p.budgeted {
-    font-size: 2.0rem;
+    font-size: 3.0rem;
+}
+
+.kitty p.budgeted span {
+    overflow: hidden;
 }
 
 .kitty p.budgeted .spent {
-    font-size: 3.2rem;
 }
 
 .kitty p.budgeted .earmarked {
@@ -70,8 +73,22 @@ div.content {
 }
 
 header.used-60 .budgeted {
-    padding-left: 41%;
     background: linear-gradient(to right, #033B51 40%, #7DB7CD 40%, #7DB7CD 40%); /* W3C */
     margin-bottom: 1.2rem;
     border: 0.1rem solid #033B51;
+}
+
+header.used-60 .budgeted .spent {
+    display: inline-block;
+    width: 40%;
+    text-align: right;
+    padding-right:1%;
+    box-sizing: border-box;
+    color: #7DB7CD;
+}
+
+header.used-60 .budgeted .earmarked {
+    display: inline-block;
+    text-align: left;
+    color: #033B51;
 }

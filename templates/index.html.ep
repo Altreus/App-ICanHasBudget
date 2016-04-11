@@ -8,7 +8,7 @@
                 <i class="fa fa-crosshairs"></i>
             </a>
             <p class="budgeted">
-                <span class="spent">£200</span>/<span class="earmarked">£300</span>
+                <span class="spent">£200</span> <span class="earmarked">£300</span>
             </p>
         </header>
 
@@ -20,7 +20,7 @@
                         <i class="fa fa-bitcoin"></i>
                     </a>
                     <p class="budgeted">
-                        <span class="spent">£200</span>/<span class="earmarked">£300</span>
+                        <span class="spent">£200</span> <span class="earmarked">£300</span>
                     </p>
                 </header>
             </div>
@@ -31,7 +31,7 @@
                         <i class="fa fa-bitcoin"></i>
                     </a>
                     <p class="budgeted">
-                        <span class="spent">£200</span>/<span class="earmarked">£300</span>
+                        <span class="spent">£200</span> <span class="earmarked">£300</span>
                     </p>
                 </header>
             </div>
@@ -42,7 +42,7 @@
                         <i class="fa fa-bitcoin"></i>
                     </a>
                     <p class="budgeted">
-                        <span class="spent">£200</span>/<span class="earmarked">£300</span>
+                        <span class="spent">£200</span> <span class="earmarked">£300</span>
                     </p>
                 </header>
             </div>

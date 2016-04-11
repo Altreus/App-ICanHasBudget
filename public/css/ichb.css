@@ -1,0 +1,81 @@
+body {
+    background: #033B51;
+}
+
+nav div {
+    text-align: center;
+    font-size: 2em;
+    line-height: 200%;
+}
+
+nav div.active {
+    background: #06526F;
+}
+
+nav a {
+    text-decoration: none;
+    color: #7DB7CD;
+}
+
+div.content {
+    background: #06526F;
+    padding: 2%;
+}
+
+.kitty {
+    padding: 4%;
+    background: #46D192;
+    border-radius: 1rem;
+    border: 0.2rem solid #239461;
+    /*
+    box-shadow: inset 1rem 1rem 2rem 0px rgba(0,0,0,0.25);
+    */
+    margin-bottom: 2rem;
+}
+
+.kitty .kitty {
+    box-shadow: 1rem 1rem 2rem 0px rgba(0,0,0,0.25);
+}
+
+.kitty .kitty-type {
+    float: right;
+    color: #178844;
+    /*
+    color: #0E2A77;
+    border: 0.2rem solid #5576D0;
+    background: #8499D0;
+    */
+    font-size: 5.0rem;
+    padding: 1.5rem 1.7rem;
+    line-height: 5.0rem;
+    /*
+    box-shadow: 0.5rem 0.5rem 1rem 0px rgba(0,0,0,0.25);
+    */
+}
+
+.kitty h1 {
+    display: inline-block;   
+}
+
+.kitty p.budgeted {
+    font-size: 5.0rem;
+    display: inline-block;
+    margin-left: 2rem;
+}
+
+.kitty p.budgeted .spent {
+    vertical-align: super;
+    font-size: 75%;
+}
+
+.kitty p.budgeted .earmarked {
+    vertical-align: sub;
+    font-size: 75%;
+}
+
+header.used-60 .progress-bar {
+    height: 2rem;
+    background: linear-gradient(to right, #033B51 40%, #7DB7CD 40%, #7DB7CD 40%); /* W3C */
+    margin-bottom: 0.5rem;
+    border: 0.1rem solid #033B51;
+}

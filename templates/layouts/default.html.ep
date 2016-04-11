@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel="stylesheet" href="/css/ichb.css">
+        <link rel="stylesheet" href="/css/skeleton.css">
+        <link rel="stylesheet" href="/css/font-awesome.min.css">
+      <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class="container u-full-width">
+            <nav class="row">
+                <div class="active one-third column">
+                    <a href="" title="Kitties">
+                        <i class="fa fa-btc"></i>
+                        <span class="hide-for-small">Kitties</span>
+                    </a>
+                </div>
+                <div class="one-third column">
+                    <a href="" title="Accounts">
+                        <i class="fa fa-book"></i>
+                        <span class="hide-for-small">Accounts</span>
+                    </a>
+                </div>
+                <div class="one-third column">
+                    <a href="" title="Trends">
+                        <i class="fa fa-line-chart"></i>
+                        <span class="hide-for-small">Trends</span>
+                    </a>
+                </div>
+            </nav>
+            <div class="content">
+                <%= content %>
+            </div>
+        </div>
+    </body>
+</html>

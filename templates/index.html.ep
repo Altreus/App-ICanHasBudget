@@ -2,7 +2,7 @@
 % title 'Welcome';
 <section class="row">
     <div class="kitty twelve columns">
-        <header class="used-60">
+        <header class="used-90">
             <h1>Household</h1>
             <div class="buttons">
                 <button title="Show/Hide Transactions">
@@ -13,7 +13,7 @@
                 <i class="fa fa-crosshairs"></i>
             </a>
             <p class="budgeted">
-                <span class="spent">£200</span> <span class="earmarked">£300</span>
+                <span class="spent">£200.98</span> <span class="earmarked">£327.57</span>
             </p>
         </header>
 

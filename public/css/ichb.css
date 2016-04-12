@@ -63,25 +63,47 @@ div.content {
     
 }
 
-header.used-60 .budgeted {
-    background: linear-gradient(to right, #033B51 40%, #7DB7CD 40%, #7DB7CD 40%); /* W3C */
+header .budgeted {
     margin-bottom: 1.2rem;
     border: 0.1rem solid #033B51;
 }
 
-header.used-60 .budgeted .spent {
+header .budgeted .spent {
     display: inline-block;
-    width: 40%;
-    text-align: right;
-    padding-right:1%;
+    text-align: left;
+    padding-left:1%;
     box-sizing: border-box;
+    color: #033B51;
+}
+
+header .budgeted .earmarked {
+    padding-right:1%;
+    display: inline-block;
+    float: right;
+    color: #033B51;
+}
+
+header.used-60 .budgeted {
+    background: linear-gradient(to right, #033B51 40%, #7DB7CD 40%, #7DB7CD 40%); /* W3C */
+}
+
+header.used-60 .budgeted .spent {
+    text-align: right;
+    width: 40%;
     color: #7DB7CD;
+    padding-right: 1%;
 }
 
 header.used-60 .budgeted .earmarked {
-    display: inline-block;
-    text-align: left;
-    color: #033B51;
+    float: none;
+}
+
+header.used-90 .budgeted {
+    background: linear-gradient(to right, #033B51 10%, #7DB7CD 10%, #7DB7CD 10%); /* W3C */
+}
+
+header.used-90 .budgeted .spent {
+    margin-left: 10%;
 }
 
 div.buttons {

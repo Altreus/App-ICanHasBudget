@@ -1,0 +1,166 @@
+@mixin smaller {
+    @media (min-width: 400px) {
+        @content
+    }
+}
+
+@mixin small {
+    @media (min-width: 550px) {
+        @content
+    }
+}
+
+@mixin medium {
+    @media (min-width: 750px) {
+        @content
+    }
+}
+
+@mixin large {
+    @media (min-width: 1000px) {
+        @content
+    }
+}
+
+@mixin larger {
+    @media (min-width: 1200px) {
+        @content
+    }
+}
+
+body {
+    background: #033B51;
+    margin: 0;
+}
+
+nav {
+    div {
+        float: left;
+        width: 30.6666666667%;
+        text-align: center;
+        font-size: 2em;
+        line-height: 200%;
+
+        &.active {
+            background: #06526F;
+        }
+
+        span {
+            display: none;
+            @include medium {
+                display: inline;
+            }
+        }
+    }
+
+    a {
+        text-decoration: none;
+        color: #7DB7CD;
+    }
+}
+
+div.content {
+    background: #06526F;
+    padding: 2%;
+}
+
+.kitty {
+    padding: 4%;
+    background: #46D192;
+    border-radius: 1rem;
+    border: 0.2rem solid #239461;
+    margin-bottom: 2rem;
+
+    .kitty {
+        box-shadow: 1rem 1rem 2rem 0px rgba(0,0,0,0.25);
+    }
+    .kitty-type {
+        float: right;
+        color: #178844;
+        font-size: 5.0rem;
+        line-height: 5.0rem;
+    }
+
+    h1 {
+        display: inline-block;   
+    }
+
+    p.budgeted {
+        font-size: 3.0rem;
+        height: 1.0rem;
+        margin: 0 10% 3.0rem;
+        span {
+            box-sizing: border-box;
+            position: relative;
+            top: 1.0rem;
+        }
+
+        .spent {
+        }
+        .earmarked {
+        
+        }
+    }
+}
+
+header .budgeted {
+    margin-bottom: 1.2rem;
+    border: 0.1rem solid #033B51;
+
+    .spent {
+        display: inline-block;
+        text-align: left;
+        color: #033B51;
+        direction: rtl;
+        border-right: 0.1rem solid #033B51 ;
+        padding-right: 1%;
+    }
+
+    .earmarked {
+        padding-right:1%;
+        display: inline-block;
+        color: #033B51;
+    }
+}
+
+header.used-60 {
+    .budgeted {
+        background: linear-gradient(to right, #033B51 40%, #7DB7CD 40%, #7DB7CD 40%); /* W3C */
+
+        .spent {
+            text-align: right;
+            width: 40%;
+        }
+
+        .earmarked {
+        }
+    }
+}
+
+header.used-90 {
+    .budgeted {
+        background: linear-gradient(to right, #033B51 10%, #7DB7CD 10%, #7DB7CD 10%); /* W3C */
+
+        .spent {
+            width: 10%;
+        }
+    }
+}
+
+div.buttons {
+    margin-left: 2rem;
+    position: relative;
+    top: -1rem;
+    &, & button {
+        display: inline-block;
+        font-size: 2rem;
+    }
+
+    button {
+        padding: 0.4rem 1.5rem;
+        background: #033B51;
+        color: #7DB7CD;
+        height: initial;
+    }
+}
+

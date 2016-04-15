@@ -50,10 +50,14 @@ div.content {
 
 .kitty p.budgeted {
     font-size: 3.0rem;
-    overflow: hidden;
+    height: 1.0rem;
+    margin: 0 10% 3.0rem;
 }
 
 .kitty p.budgeted span {
+    box-sizing: border-box;
+    position: relative;
+    top: 1.0rem;
 }
 
 .kitty p.budgeted .spent {
@@ -71,15 +75,15 @@ header .budgeted {
 header .budgeted .spent {
     display: inline-block;
     text-align: left;
-    padding-left:1%;
-    box-sizing: border-box;
     color: #033B51;
+    direction: rtl;
+    border-right: 0.1rem solid #033B51 ;
+    padding-right: 1%;
 }
 
 header .budgeted .earmarked {
     padding-right:1%;
     display: inline-block;
-    float: right;
     color: #033B51;
 }
 
@@ -90,12 +94,9 @@ header.used-60 .budgeted {
 header.used-60 .budgeted .spent {
     text-align: right;
     width: 40%;
-    color: #7DB7CD;
-    padding-right: 1%;
 }
 
 header.used-60 .budgeted .earmarked {
-    float: none;
 }
 
 header.used-90 .budgeted {
@@ -103,7 +104,7 @@ header.used-90 .budgeted {
 }
 
 header.used-90 .budgeted .spent {
-    margin-left: 10%;
+    width: 10%;
 }
 
 div.buttons {

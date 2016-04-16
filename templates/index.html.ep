@@ -1,7 +1,7 @@
 % layout 'default';
 % title 'Welcome';
 <section class="row">
-    <div class="kitty twelve columns">
+    <div class="kitty open twelve columns">
         <header class="used-90">
             <h1>
                 <span class="kitty-type">
@@ -10,7 +10,7 @@
                 Household
             </h1>
             <div class="controls">
-                <a href="">
+                <a href="" class="button">
                     <i class="fa fa-exchange"></i>
                 </a>
             </div>
@@ -36,6 +36,14 @@
                     <td>£-40</td>
                 </tr>
             </tbody>
+            <tfoot>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td colspan="3">
+                        <a href="">
+                            <i class="fa fa-plus"></i>
+                        </a>
+                    </td>
         </table>
 
         <div class="row">
@@ -48,7 +56,7 @@
                         Groceries
                     </h1>
                     <div class="controls">
-                        <a href="">
+                        <a href="" class="button">
                             <i class="fa fa-exchange"></i>
                         </a>
                     </div>
@@ -86,7 +94,7 @@
                         Cleaning Supplies
                     </h1>
                     <div class="controls">
-                        <a href="">
+                        <a href="" class="button">
                             <i class="fa fa-exchange"></i>
                         </a>
                     </div>

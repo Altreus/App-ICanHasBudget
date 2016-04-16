@@ -11,6 +11,16 @@
     </head>
     <body>
         <div class="container u-full-width">
+            <header class="row">
+                <div class="overview">
+                    <p class="total four columns">
+                        <i class="fa fa-book"></i> £1234.50</p>
+                    <p class="remaining four columns overbudgeted">
+                        <i class="fa fa-thumb-tack"></i> £-100</p>
+                    <p class="cash four columns">
+                        <i class="fa fa-money"></i> £100</p>
+                </div>
+            </header>
             <nav class="row">
                 <div class="active">
                     <a href="" title="Kitties">
@@ -31,6 +41,7 @@
                     </a>
                 </div>
             </nav>
+
             <div class="content">
                 <%= content %>
             </div>

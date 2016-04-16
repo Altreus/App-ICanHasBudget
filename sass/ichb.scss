@@ -1,3 +1,33 @@
+$number-font: "Arvo";
+
+$dark-blue: #033B51;
+$mid-blue: #06526F;
+$light-blue: #7DB7CD;
+
+$dark-green: #239461;
+$mid-green: #46D192;
+
+$dark-red: #3E3009;
+$light-red: #DCC9C9;
+
+@mixin progress-bar($percent) {
+    background: linear-gradient(to right, $dark-blue $percent, $light-blue $percent, $light-blue $percent);
+}
+
+@mixin battery-icon($icon) {
+    &:before {
+        font-family: "FontAwesome";
+        content: $icon;
+        float: right;
+        font-size: 2rem;
+        color: $dark-blue;
+    }
+
+    @include medium {
+        &:before { content: "" }
+    }
+}
+
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
      -moz-border-radius: $radius;
@@ -36,12 +66,33 @@
 }
 
 body {
-    background: #033B51;
+    background: $dark-blue;
     margin: 0;
+}
+
+.overview {
+    p {
+        display: inline-block;
+        margin: 0;
+        width: 30.6666666667%;
+        padding: 1rem;
+        color: $light-blue;
+        text-align: right;
+        font-family: $number-font;
+
+        &.overbudgeted {
+            color: $dark-red;
+            text-shadow: 0px 0px 6px $light-red;
+        }
+    }
 }
 
 nav {
     div {
+        &:first-child {
+            margin-left: 0;
+        }
+        margin-left: 4%;
         float: left;
         width: 30.6666666667%;
         text-align: center;
@@ -49,7 +100,7 @@ nav {
         line-height: 200%;
 
         &.active {
-            background: #06526F;
+            background: $mid-blue;
         }
 
         span {
@@ -62,20 +113,35 @@ nav {
 
     a {
         text-decoration: none;
-        color: #7DB7CD;
+        color: $light-blue;
     }
 }
 
 div.content {
-    background: #06526F;
+    background: $mid-blue;
     padding: 2%;
+}
+
+.button.button {
+    @include border-radius(0.6rem);
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+    background: $mid-blue;
+    color: $light-blue;
+    border: 0.2rem solid $dark-blue;
+    display: inline-block;
+    font-size: 2.2rem;
+    line-height: 3.6rem;
+    height: initial;
+    width: 4rem;
 }
 
 .kitty {
     padding: 4%;
-    background: #46D192;
+    background: $mid-green;
     border-radius: 1rem;
-    border: 0.2rem solid #239461;
+    border: 0.2rem solid $dark-green;
     margin-bottom: 2rem;
 
     .kitty {
@@ -85,12 +151,8 @@ div.content {
     h1 {
         margin: 0;
         line-height: 5.0rem;
-        margin-left: 5.0rem;
-        text-indent: -5.0rem;
 
         .kitty-type {
-            position: relative;
-            left: 5.0rem;
             float: left;
             color: #178844;
             font-size: 5.0rem;
@@ -109,25 +171,20 @@ div.content {
         position: relative;
 
         a {
-            @include border-radius(0.6rem);
-            box-sizing: border-box;
-            text-align: center;
-            background: #06526F;
-            color: #7DB7CD;
-            border: 0.2rem solid  #033B51;
-            display: inline-block;
-            font-size: 2.2rem;
-            line-height: 3.6rem;
-            width: 4.0rem;
-
             position: absolute;
             top: 40%;
+            left: -0.4rem;
             margin: -1.5rem 0 0 0;
         }
     }
 
+    &.open > header .controls a {
+        color: $mid-blue;
+        background: $light-blue;
+    }
+
     p.budgeted {
-        font-family: "Arvo";
+        font-family: $number-font;
         font-size: 3.0rem;
         position: absolute;
         margin-left: 5.0rem;
@@ -144,7 +201,7 @@ div.content {
             margin: 0.5rem 1rem 3.0rem 5rem;
             display: block;
             font-size: 3.0rem;
-            border: 0.1rem solid #033B51;
+            border: 0.1rem solid $dark-blue;
             position: initial;
 
             span {
@@ -156,16 +213,16 @@ div.content {
             .spent {
                 display: inline-block;
                 text-align: left;
-                color: #033B51;
+                color: $dark-blue;
                 direction: rtl;
-                border-right: 0.1rem solid #033B51 ;
+                border-right: 0.1rem solid $dark-blue ;
                 padding-right: 1%;
             }
 
             .earmarked {
                 padding-right:1%;
                 display: inline-block;
-                color: #033B51;
+                color: $dark-blue;
             }
         }
     }
@@ -178,27 +235,125 @@ div.content {
         }
     }
 
-    @include medium {
-        header.used-60 {
+    table {
+        display: none;
+    }
+
+    tfoot td {
+        text-align: right;
+        padding: 0 2rem;
+        border: 0;
+
+        a {
+            color: $dark-green;
+            font-size: 3.0rem;
+        }
+    }
+
+    &.open > table {
+        display: table;
+    }
+
+    header {
+        @include medium {
+            &:after { content: "" }
+        }
+
+        &.used-0 {
+            @include battery-icon("\f240");
             .budgeted {
-                background: linear-gradient(to right, #033B51 40%, #7DB7CD 40%, #7DB7CD 40%); /* W3C */
-
-                .spent {
-                    text-align: right;
-                    width: 40%;
-                }
-
-                .earmarked {
+                @include medium {
+                    @include progress-bar(100%);
                 }
             }
         }
 
-        header.used-90 {
+        &.used-10 {
+            @include battery-icon("\f240");
             .budgeted {
-                background: linear-gradient(to right, #033B51 10%, #7DB7CD 10%, #7DB7CD 10%); /* W3C */
+                @include medium {
+                    @include progress-bar(90%);
+                }
+            }
+        }
 
-                .spent {
-                    width: 10%;
+        &.used-20 {
+            @include battery-icon("\f240");
+            .budgeted {
+                @include medium {
+                    @include progress-bar(80%);
+                }
+            }
+        }
+
+        &.used-30 {
+            @include battery-icon("\f241");
+            .budgeted {
+                @include medium {
+                    @include progress-bar(70%);
+                }
+            }
+        }
+
+        &.used-40 {
+            @include battery-icon("\f241");
+            .budgeted {
+                @include medium {
+                    @include progress-bar(60%);
+                }
+            }
+        }
+
+        &.used-50 {
+            @include battery-icon("\f242");
+            .budgeted {
+                @include medium {
+                    @include progress-bar(50%);
+                }
+            }
+        }
+
+        &.used-60 {
+            @include battery-icon("\f242");
+            .budgeted {
+                @include medium {
+                    @include progress-bar(40%);
+                }
+            }
+        }
+
+        &.used-70 {
+            @include battery-icon("\f242");
+            .budgeted {
+                @include medium {
+                    @include progress-bar(30%);
+                }
+            }
+        }
+
+        &.used-80 {
+            @include battery-icon("\f243");
+            .budgeted {
+                @include medium {
+                    @include progress-bar(20%);
+                }
+            }
+        }
+
+        &.used-90 {
+            @include battery-icon("\f244");
+            .budgeted {
+                @include medium {
+                    @include progress-bar(10%);
+                }
+            }
+        }
+
+        &.used-100 {
+            @include battery-icon("\f244");
+            .budgeted {
+                @include medium {
+                    @include progress-bar(0%);
                 }
             }
         }
@@ -216,8 +371,8 @@ div.buttons {
 
     button {
         padding: 0.4rem 1.5rem;
-        background: #033B51;
-        color: #7DB7CD;
+        background: $dark-blue;
+        color: $light-blue;
         height: initial;
     }
 }

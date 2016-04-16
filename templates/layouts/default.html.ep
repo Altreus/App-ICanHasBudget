@@ -6,7 +6,8 @@
         <link rel="stylesheet" href="/css/ichb.compiled.css">
         <link rel="stylesheet" href="/css/skeleton.css">
         <link rel="stylesheet" href="/css/font-awesome.min.css">
-        <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
     </head>
     <body>
         <div class="container u-full-width">

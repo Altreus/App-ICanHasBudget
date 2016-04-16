@@ -1,3 +1,10 @@
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
 @mixin smaller {
     @media (min-width: 400px) {
         @content
@@ -74,75 +81,125 @@ div.content {
     .kitty {
         box-shadow: 1rem 1rem 2rem 0px rgba(0,0,0,0.25);
     }
-    .kitty-type {
-        float: right;
-        color: #178844;
-        font-size: 5.0rem;
-        line-height: 5.0rem;
-    }
 
     h1 {
-        display: inline-block;   
+        margin: 0;
+        line-height: 5.0rem;
+        margin-left: 5.0rem;
+        text-indent: -5.0rem;
+
+        .kitty-type {
+            position: relative;
+            left: 5.0rem;
+            float: left;
+            color: #178844;
+            font-size: 5.0rem;
+            width: 5rem;
+        }
+    }
+
+    .controls {
+        clear: both;
+        display: inline-block;
+        float: left;
+        
+        height: 3.0rem * 1.6;
+        width: 5.0rem;
+
+        position: relative;
+
+        a {
+            @include border-radius(0.6rem);
+            box-sizing: border-box;
+            text-align: center;
+            background: #06526F;
+            color: #7DB7CD;
+            border: 0.2rem solid  #033B51;
+            display: inline-block;
+            font-size: 2.2rem;
+            line-height: 3.6rem;
+            width: 4.0rem;
+
+            position: absolute;
+            top: 40%;
+            margin: -1.5rem 0 0 0;
+        }
     }
 
     p.budgeted {
+        font-family: "Arvo";
         font-size: 3.0rem;
-        height: 1.0rem;
-        margin: 0 10% 3.0rem;
-        span {
-            box-sizing: border-box;
-            position: relative;
-            top: 1.0rem;
-        }
-
-        .spent {
-        }
-        .earmarked {
-        
-        }
-    }
-}
-
-header .budgeted {
-    margin-bottom: 1.2rem;
-    border: 0.1rem solid #033B51;
-
-    .spent {
-        display: inline-block;
-        text-align: left;
-        color: #033B51;
-        direction: rtl;
-        border-right: 0.1rem solid #033B51 ;
-        padding-right: 1%;
-    }
-
-    .earmarked {
-        padding-right:1%;
-        display: inline-block;
-        color: #033B51;
-    }
-}
-
-header.used-60 {
-    .budgeted {
-        background: linear-gradient(to right, #033B51 40%, #7DB7CD 40%, #7DB7CD 40%); /* W3C */
-
-        .spent {
-            text-align: right;
-            width: 40%;
-        }
+        position: absolute;
+        margin-left: 5.0rem;
 
         .earmarked {
+            opacity: 0.4;
+            font-size: 2.5rem;
+        }
+
+        margin-bottom: 0;
+
+        @include medium {
+            height: 1.0rem;
+            margin: 0.5rem 1rem 3.0rem 5rem;
+            display: block;
+            font-size: 3.0rem;
+            border: 0.1rem solid #033B51;
+
+            span {
+                box-sizing: border-box;
+                position: relative;
+                top: 1.0rem;
+            }
+
+            .spent {
+                display: inline-block;
+                text-align: left;
+                color: #033B51;
+                direction: rtl;
+                border-right: 0.1rem solid #033B51 ;
+                padding-right: 1%;
+            }
+
+            .earmarked {
+                padding-right:1%;
+                display: inline-block;
+                color: #033B51;
+            }
         }
     }
-}
 
-header.used-90 {
-    .budgeted {
-        background: linear-gradient(to right, #033B51 10%, #7DB7CD 10%, #7DB7CD 10%); /* W3C */
+    thead {
+        display: none;
 
-        .spent {
-            width: 10%;
+        @include small {
+            display: table-header-group;
+        }
+    }
+
+    @include medium {
+        header.used-60 {
+            .budgeted {
+                background: linear-gradient(to right, #033B51 40%, #7DB7CD 40%, #7DB7CD 40%); /* W3C */
+
+                .spent {
+                    text-align: right;
+                    width: 40%;
+                }
+
+                .earmarked {
+                }
+            }
+        }
+
+        header.used-90 {
+            .budgeted {
+                background: linear-gradient(to right, #033B51 10%, #7DB7CD 10%, #7DB7CD 10%); /* W3C */
+
+                .spent {
+                    width: 10%;
+                }
+            }
         }
     }
 }
@@ -164,3 +221,18 @@ div.buttons {
     }
 }
 
+td {
+    &:nth-child(3) {
+        display: none;
+        @include small {
+            display: table-cell;
+        }
+    }
+    &:nth-child(1) {
+        white-space: nowrap;
+    }
+}
+
+th {
+    @extend td
+}

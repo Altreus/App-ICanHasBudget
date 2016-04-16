@@ -3,17 +3,19 @@
 <section class="row">
     <div class="kitty twelve columns">
         <header class="used-90">
-            <h1>Household</h1>
-            <div class="buttons">
-                <button title="Show/Hide Transactions">
-                    <i class="fa fa-bank"></i>
-                </button>
+            <h1>
+                <span class="kitty-type">
+                    <i class="fa fa-bitcoin"></i>
+                </span>
+                Household
+            </h1>
+            <div class="controls">
+                <a href="">
+                    <i class="fa fa-exchange"></i>
+                </a>
             </div>
-            <a href="" title="Target" class="kitty-type">
-                <i class="fa fa-crosshairs"></i>
-            </a>
             <p class="budgeted">
-                <span class="spent">£200.98</span> <span class="earmarked">£327.57</span>
+                <span class="remaining">£200.98</span> <span class="earmarked">£327.57</span>
             </p>
         </header>
 
@@ -39,19 +41,28 @@
         <div class="row">
             <div class="kitty twelve columns">
                 <header class="used-60">
-                    <h1>Groceries</h1>
-                    <a href="" title="Budget" class="kitty-type">
-                        <i class="fa fa-bitcoin"></i>
-                    </a>
+                    <h1>
+                        <span class="kitty-type">
+                            <i class="fa fa-bitcoin"></i>
+                        </span>
+                        Groceries
+                    </h1>
+                    <div class="controls">
+                        <a href="">
+                            <i class="fa fa-exchange"></i>
+                        </a>
+                    </div>
                     <p class="budgeted">
-                        <span class="spent">£200</span> <span class="earmarked">£300</span>
+                        <span class="remaining">£200.98</span> <span class="earmarked">£327.57</span>
                     </p>
                 </header>
+
                 <table class="transactions u-full-width">
                     <thead>
                         <tr>
                             <th>Date</th>
                             <th>Entity</th>
+                            <th>Account</th>
                             <th>Income</th>
                         </tr>
                     </thead>
@@ -59,6 +70,7 @@
                         <tr>
                             <td>2016-04-01</td>
                             <td>Marks &amp; Sparks</td>
+                            <td>Bank Account</td>
                             <td>£-40</td>
                         </tr>
                     </tbody>
@@ -67,23 +79,37 @@
             </div>
             <div class="kitty twelve columns">
                 <header class="used-60">
-                    <h1>Cleaning Surprise</h1>
-                    <a href="" title="Budget" class="kitty-type">
-                        <i class="fa fa-bitcoin"></i>
-                    </a>
+                    <h1>
+                        <span class="kitty-type">
+                            <i class="fa fa-bitcoin"></i>
+                        </span>
+                        Cleaning Supplies
+                    </h1>
+                    <div class="controls">
+                        <a href="">
+                            <i class="fa fa-exchange"></i>
+                        </a>
+                    </div>
                     <p class="budgeted">
-                        <span class="spent">£200</span> <span class="earmarked">£300</span>
+                        <span class="remaining">£200.98</span> <span class="earmarked">£327.57</span>
                     </p>
                 </header>
             </div>
             <div class="kitty twelve columns">
                 <header class="used-60">
-                    <h1>Car &amp; Bike</h1>
-                    <a href="" title="Budget" class="kitty-type">
-                        <i class="fa fa-bitcoin"></i>
-                    </a>
+                    <h1>
+                        <span class="kitty-type">
+                            <i class="fa fa-crosshairs"></i>
+                        </span>
+                        Car & Bike
+                    </h1>
+                    <div class="controls">
+                        <a href="">
+                            <i class="fa fa-exchange"></i>
+                        </a>
+                    </div>
                     <p class="budgeted">
-                        <span class="spent">£200</span> <span class="earmarked">£300</span>
+                        <span class="remaining">£200.98</span> <span class="earmarked">£327.57</span>
                     </p>
                 </header>
             </div>

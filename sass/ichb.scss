@@ -1,17 +1,28 @@
 $number-font: "Arvo";
 
-$dark-blue: #033B51;
-$mid-blue: #06526F;
-$light-blue: #7DB7CD;
+$primary-lighter: #73AAC2;
+$primary-light: #44798F;
+$primary-mid: #27576B;
+$primary-dark: #123747;
+$primary-darker: #051A23;
 
-$dark-green: #239461;
-$mid-green: #46D192;
+$secondary-lighter: #7C93C9;
+$secondary-light: #4E6498;
+$secondary-mid: #2E4272;
+$secondary-dark: #16264B;
+$secondary-darker: #071025;
 
-$dark-red: #3E3009;
-$light-red: #DCC9C9;
+$tertiary-lighter: #73C9AA;
+$tertiary-light: #45997B;
+$tertiary-mid: #267257;
+$tertiary-dark: #104B36;
+$tertiary-darker: #042519;
+
+$warning-primary: #3E3009;
+$warning-secondary: #DCC9C9;
 
 @mixin progress-bar($percent) {
-    background: linear-gradient(to right, $dark-blue $percent, $light-blue $percent, $light-blue $percent);
+    background: linear-gradient(to right, $primary-dark $percent, $primary-lighter $percent, $primary-lighter $percent);
 }
 
 @mixin battery-icon($icon) {
@@ -20,7 +31,7 @@ $light-red: #DCC9C9;
         content: $icon;
         float: right;
         font-size: 2rem;
-        color: $dark-blue;
+        color: $primary-darker;
     }
 
     @include medium {
@@ -65,24 +76,45 @@ $light-red: #DCC9C9;
     }
 }
 
+block-item {
+    padding: 4%;
+    background: $tertiary-lighter;
+    border-radius: 1rem;
+    border: 0.2rem solid $tertiary-dark;
+    margin-bottom: 2rem;
+
+    h1 {
+        margin: 0;
+        line-height: 5.0rem;
+        color: $tertiary-dark;
+    }
+}
+
+block-item-main-icon {
+    float: left;
+    color: $tertiary-light;
+    font-size: 5.0rem;
+    width: 5rem;
+}
+
 body {
-    background: $dark-blue;
+    background: $primary-darker;
     margin: 0;
 }
 
 .overview {
     p {
         display: inline-block;
-        margin: 0;
         width: 30.6666666667%;
         padding: 1rem;
-        color: $light-blue;
+        color: $primary-lighter;
         text-align: right;
         font-family: $number-font;
+        margin-bottom: 0;
 
         &.overbudgeted {
-            color: $dark-red;
-            text-shadow: 0px 0px 6px $light-red;
+            color: $warning-primary;
+            text-shadow: 0px 0px 6px $warning-secondary;
         }
     }
 }
@@ -100,7 +132,7 @@ nav {
         line-height: 200%;
 
         &.active {
-            background: $mid-blue;
+            background: $primary-mid;
         }
 
         span {
@@ -113,50 +145,82 @@ nav {
 
     a {
         text-decoration: none;
-        color: $light-blue;
+        color: $primary-lighter;
     }
 }
 
 div.content {
-    background: $mid-blue;
+    background: $primary-mid;
     padding: 2%;
 }
 
 .button.button {
-    @include border-radius(0.6rem);
+    @include border-radius(initial);
     padding: 0;
     box-sizing: border-box;
     text-align: center;
-    background: $mid-blue;
-    color: $light-blue;
-    border: 0.2rem solid $dark-blue;
+    background: $secondary-mid;
+    color: $secondary-lighter;
+    border: 0.1rem solid $secondary-dark;
     display: inline-block;
     font-size: 2.2rem;
     line-height: 3.6rem;
     height: initial;
     width: 4rem;
+    text-transform: none;
+
+    &.long {
+        width: auto;
+        padding: 0 1rem;
+    }
+
+    &:hover {
+        color: $secondary-lighter;
+    }
+}
+
+button-inverse {
+    color: $primary-dark;
+    background: $primary-lighter;
+}
+
+thead {
+    display: none;
+
+    @include small {
+        display: table-header-group;
+    }
+}
+
+table {
+    display: none;
+}
+
+tfoot td {
+    text-align: right;
+    padding: 0 2rem;
+    border: 0;
+
+    a {
+        color: $secondary-mid;
+        font-size: 3.0rem;
+    }
+}
+
+.open > table {
+    display: table;
 }
 
 .kitty {
-    padding: 4%;
-    background: $mid-green;
-    border-radius: 1rem;
-    border: 0.2rem solid $dark-green;
-    margin-bottom: 2rem;
+    @extend block-item;
 
     .kitty {
         box-shadow: 1rem 1rem 2rem 0px rgba(0,0,0,0.25);
     }
 
     h1 {
-        margin: 0;
-        line-height: 5.0rem;
-
         .kitty-type {
-            float: left;
-            color: #178844;
-            font-size: 5.0rem;
-            width: 5rem;
+            @extend block-item-main-icon;
         }
     }
 
@@ -179,11 +243,11 @@ div.content {
     }
 
     &.open > header .controls a {
-        color: $mid-blue;
-        background: $light-blue;
+        @extend button-inverse;
     }
 
     p.budgeted {
+        color: $tertiary-darker;
         font-family: $number-font;
         font-size: 3.0rem;
         position: absolute;
@@ -201,7 +265,7 @@ div.content {
             margin: 0.5rem 1rem 3.0rem 5rem;
             display: block;
             font-size: 3.0rem;
-            border: 0.1rem solid $dark-blue;
+            border: 0.1rem solid $primary-mid;
             position: initial;
 
             span {
@@ -209,49 +273,23 @@ div.content {
                 position: relative;
                 top: 1.0rem;
             }
+        }
+    }
 
-            .spent {
-                display: inline-block;
-                text-align: left;
-                color: $dark-blue;
-                direction: rtl;
-                border-right: 0.1rem solid $dark-blue ;
-                padding-right: 1%;
-            }
-
-            .earmarked {
-                padding-right:1%;
-                display: inline-block;
-                color: $dark-blue;
+    td {
+        &:nth-child(3) {
+            display: none;
+            @include small {
+                display: table-cell;
             }
         }
-    }
-
-    thead {
-        display: none;
-
-        @include small {
-            display: table-header-group;
+        &:nth-child(1) {
+            white-space: nowrap;
         }
     }
 
-    table {
-        display: none;
-    }
-
-    tfoot td {
-        text-align: right;
-        padding: 0 2rem;
-        border: 0;
-
-        a {
-            color: $dark-green;
-            font-size: 3.0rem;
-        }
-    }
-
-    &.open > table {
-        display: table;
+    th {
+        @extend td
     }
 
     header {
@@ -360,35 +398,23 @@ div.content {
     }
 }
 
-div.buttons {
-    margin-left: 2rem;
-    position: relative;
-    top: -1rem;
-    &, & button {
-        display: inline-block;
-        font-size: 2rem;
-    }
+.account {
+    @extend block-item;
 
-    button {
-        padding: 0.4rem 1.5rem;
-        background: $dark-blue;
-        color: $light-blue;
-        height: initial;
-    }
-}
-
-td {
-    &:nth-child(3) {
-        display: none;
-        @include small {
-            display: table-cell;
+    h1 {
+        @include medium {
+            display: inline-block;
         }
     }
-    &:nth-child(1) {
-        white-space: nowrap;
+    .account-type {
+        @extend block-item-main-icon;
+        font-size: 4rem;
     }
-}
 
-th {
-    @extend td
+    .account-balance {
+        @extend h1;
+        float:right;
+        font-family: $number-font;
+        font-size: 4rem;
+    }
 }

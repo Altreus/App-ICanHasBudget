@@ -5,23 +5,19 @@ use Mojolicious::Lite;
 plugin 'PODRenderer';
 
 get '/' => sub {
-  my $c = shift;
-  $c->render(template => 'index');
+    my $c = shift;
+    $c->render(
+        template => 'index',
+        section => 'kitties'
+    );
+};
+
+get '/accounts' => sub {
+    my $c = shift;
+    $c->render(
+        template => 'accounts',
+        section => 'accounts'
+    );
 };
 
 app->start;
-__DATA__
-
-@@ index.html.ep
-% layout 'default';
-% title 'Welcome';
-<h1>Welcome to the Mojolicious real-time web framework!</h1>
-To learn more, you can browse through the documentation
-<%= link_to 'here' => '/perldoc' %>.
-
-@@ layouts/default.html.ep
-<!DOCTYPE html>
-<html>
-  <head><title><%= title %></title></head>
-  <body><%= content %></body>
-</html>

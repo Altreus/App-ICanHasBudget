@@ -277,13 +277,13 @@ tfoot td {
     }
 
     td {
-        &:nth-child(3) {
+        &.field-account {
             display: none;
             @include small {
                 display: table-cell;
             }
         }
-        &:nth-child(1) {
+        &.field-date {
             white-space: nowrap;
         }
     }

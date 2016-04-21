@@ -3,38 +3,13 @@
 <section class="row">
     <div class="account twelve columns">
         <header>
+            <span class="account-balance overbudgeted">£-123456.34</span>
             <h1>
                 <span class="account-type">
                     <i class="fa fa-credit-card"></i>
                 </span>
                 Nationwide
             </h1>
-            <span class="account-balance">£1234.56</span>
-            <div class="account-features row">
-                <p class="two columns account-type-words">
-                    Bank account
-                </p>
-                <p class="two columns account-contingency">
-                    On-budget
-                </p>
-                <p class="four columns account-recurring-in">
-                    Recurring income: <span class="numeric">£300</span>
-                </p>
-                <p class="four columns account-recurring-in">
-                    Recurring expenditure: <span class="numeric">£300</span>
-                </p>
-            </div>
-        </header>
-    </div>
-    <div class="account twelve columns">
-        <header>
-            <h1>
-                <span class="account-type">
-                    <i class="fa fa-money"></i>
-                </span>
-                Petty Cash
-            </h1>
-            <span class="account-balance">£1234.56</span>
             <div class="account-features row">
                 <p class="two columns account-type-words">
                     Bank account
@@ -55,11 +30,11 @@
                     Transfer
                 </a>
                 <a href="" class="button long">
-                    <i class="fa fa-exchange"></i>
-                    Add transaction
+                    <i class="fa fa-hand-lizard-o"></i>
+                    Transactions
                 </a>
                 <a href="" class="button long">
-                    <i class="fa fa-exchange"></i>
+                    <i class="fa fa-gear"></i>
                     Account settings
                 </a>
             </div>
@@ -67,19 +42,58 @@
     </div>
     <div class="account twelve columns">
         <header>
+            <span class="account-balance">£123456.34</span>
+            <h1>
+                <span class="account-type">
+                    <i class="fa fa-briefcase"></i>
+                </span>
+                Limited Access Saver
+            </h1>
+            <div class="account-features row">
+                <p class="two columns account-type-words">
+                    Savings
+                </p>
+                <p class="two columns account-contingency">
+                    Off-budget
+                </p>
+                <p class="four columns account-recurring-in">
+                    Recurring income: <span class="numeric">£0</span>
+                </p>
+                <p class="four columns account-recurring-in">
+                    Recurring expenditure: <span class="numeric">£0</span>
+                </p>
+            </div>
+            <div class="account-tools">
+                <a href="" class="button long">
+                    <i class="fa fa-exchange"></i>
+                    Transfer
+                </a>
+                <a href="" class="button long">
+                    <i class="fa fa-hand-lizard-o"></i>
+                    Transactions
+                </a>
+                <a href="" class="button long">
+                    <i class="fa fa-gear"></i>
+                    Account settings
+                </a>
+            </div>
+        </header>
+    </div>
+    <div class="account twelve columns">
+        <header>
+            <span class="account-balance">£1234.56</span>
             <h1>
                 <span class="account-type">
                     <i class="fa fa-money"></i>
                 </span>
-                Cash
+                Petty Cash
             </h1>
-            <span class="account-balance">£1234.56</span>
             <div class="account-features row">
                 <p class="two columns account-type-words">
-                    Bank account
+                    Petty Cash
                 </p>
                 <p class="two columns account-contingency">
-                    On-budget
+                    Special
                 </p>
                 <p class="four columns account-recurring-in">
                     Recurring income: <span class="numeric">£300</span>
@@ -87,6 +101,20 @@
                 <p class="four columns account-recurring-in">
                     Recurring expenditure: <span class="numeric">£300</span>
                 </p>
+            </div>
+            <div class="account-tools">
+                <a href="" class="button long">
+                    <i class="fa fa-exchange"></i>
+                    Transfer
+                </a>
+                <a href="" class="button long">
+                    <i class="fa fa-hand-lizard-o"></i>
+                    Transactions
+                </a>
+                <a href="" class="button long">
+                    <i class="fa fa-gear"></i>
+                    Account settings
+                </a>
             </div>
         </header>
     </div>

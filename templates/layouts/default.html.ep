@@ -25,19 +25,19 @@
                 <div class="<%= 'active' if $section eq 'kitties' %>">
                     <a href="/" title="Kitties">
                         <i class="fa fa-btc"></i>
-                        <span class="hide-for-small">Kitties</span>
+                        <span>Kitties</span>
                     </a>
                 </div>
                 <div class="<%= 'active' if $section eq 'accounts' %>">
                     <a href="/accounts" title="Accounts">
                         <i class="fa fa-book"></i>
-                        <span class="hide-for-small">Accounts</span>
+                        <span>Accounts</span>
                     </a>
                 </div>
                 <div class="<%= 'active' if $section eq 'trends' %>">
                     <a href="" title="Trends">
                         <i class="fa fa-line-chart"></i>
-                        <span class="hide-for-small">Trends</span>
+                        <span>Trends</span>
                     </a>
                 </div>
             </nav>

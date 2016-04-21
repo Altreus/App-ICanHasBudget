@@ -1,7 +1,7 @@
 % layout 'default';
 % title 'Welcome';
-<section class="row">
-    <div class="kitty open twelve columns">
+<section class="u-full-width">
+    <div class="kitty open u-full-width">
         <header class="used-90">
             <h1>
                 <span class="kitty-type">

@@ -7,7 +7,7 @@ plugin 'PODRenderer';
 get '/' => sub {
     my $c = shift;
     $c->render(
-        template => 'index',
+        template => 'kitties',
         section => 'kitties'
     );
 };

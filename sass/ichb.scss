@@ -12,14 +12,14 @@ $secondary-mid: #2E4272;
 $secondary-dark: #16264B;
 $secondary-darker: #071025;
 
-$tertiary-lighter: #73C9AA;
+$tertiary-lighter: white;
 $tertiary-light: #45997B;
 $tertiary-mid: #267257;
 $tertiary-dark: #104B36;
 $tertiary-darker: #042519;
 
 $warning-primary: #3E3009;
-$warning-secondary: #DCC9C9;
+$warning-secondary: #E66D04;
 
 @mixin progress-bar($percent) {
     background: linear-gradient(to right, $primary-dark $percent, $primary-lighter $percent, $primary-lighter $percent);
@@ -79,7 +79,11 @@ $warning-secondary: #DCC9C9;
 block-item {
     padding: 4%;
     background: $tertiary-lighter;
+
+    /*
     border-radius: 1rem;
+    */
+
     border: 0.2rem solid $tertiary-dark;
     margin-bottom: 2rem;
 
@@ -98,7 +102,7 @@ block-item-main-icon {
 }
 
 body {
-    background: $primary-darker;
+    background: white;
     margin: 0;
 }
 
@@ -107,16 +111,16 @@ body {
         display: inline-block;
         width: 30.6666666667%;
         padding: 1rem;
-        color: $primary-lighter;
+        color: $primary-dark;
         text-align: right;
         font-family: $number-font;
         margin-bottom: 0;
-
-        &.overbudgeted {
-            color: $warning-primary;
-            text-shadow: 0px 0px 6px $warning-secondary;
-        }
     }
+}
+
+.overbudgeted {
+    color: $warning-primary;
+    text-shadow: 0px 0px 6px $warning-secondary;
 }
 
 nav {
@@ -132,7 +136,7 @@ nav {
         line-height: 200%;
 
         &.active {
-            background: $primary-mid;
+            background: $primary-lighter;
         }
 
         span {
@@ -145,13 +149,17 @@ nav {
 
     a {
         text-decoration: none;
-        color: $primary-lighter;
+        color: $primary-mid;
     }
 }
 
 div.content {
-    background: $primary-mid;
-    padding: 2%;
+    background: white;
+    padding: 0;
+    @include medium {
+        border-top: 0.2rem solid $primary-lighter;
+        padding: 2% 0;
+    }
 }
 
 .button.button {
@@ -159,8 +167,8 @@ div.content {
     padding: 0;
     box-sizing: border-box;
     text-align: center;
-    background: $secondary-mid;
-    color: $secondary-lighter;
+    background: white;
+    color: $secondary-mid;
     border: 0.1rem solid $secondary-dark;
     display: inline-block;
     font-size: 2.2rem;

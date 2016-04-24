@@ -10,8 +10,11 @@
                 Household
             </h1>
             <div class="controls">
-                <a href="" class="button">
+                <a href="" class="button transactions">
                     <i class="fa fa-exchange"></i>
+                </a>
+                <a href="" class="button add-transaction">
+                    <i class="fa fa-plus-square-o"></i>
                 </a>
             </div>
             <p class="budgeted">
@@ -35,16 +38,13 @@
                     <td class="data-type-text field-account">Bank Account</td>
                     <td class="data-type-gbp field-income">£-40</td>
                 </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td colspan="3">
-                        <a href="">
-                            <i class="fa fa-plus"></i>
-                        </a>
-                    </td>
         </table>
+
+        <div class="controls">
+            <a href="" class="button add-transaction">
+                <i class="fa fa-plus-square-o"></i>
+            </a>
+        </div>
 
         <div class="row">
             <div class="kitty twelve columns">
@@ -58,6 +58,9 @@
                     <div class="controls">
                         <a href="" class="button">
                             <i class="fa fa-exchange"></i>
+                        </a>
+                        <a href="" class="button add-transaction">
+                            <i class="fa fa-plus-square-o"></i>
                         </a>
                     </div>
                     <p class="budgeted">
@@ -97,6 +100,9 @@
                         <a href="" class="button">
                             <i class="fa fa-exchange"></i>
                         </a>
+                        <a href="" class="button add-transaction">
+                            <i class="fa fa-plus-square-o"></i>
+                        </a>
                     </div>
                     <p class="budgeted">
                         <span class="remaining">£200.98</span> <span class="earmarked">£327.57</span>
@@ -112,8 +118,11 @@
                         Car & Bike
                     </h1>
                     <div class="controls">
-                        <a href="">
+                        <a href="" class="button">
                             <i class="fa fa-exchange"></i>
+                        </a>
+                        <a href="" class="button add-transaction">
+                            <i class="fa fa-plus-square-o"></i>
                         </a>
                     </div>
                     <p class="budgeted">

@@ -35,7 +35,7 @@
                     </a>
                 </div>
                 <div class="<%= 'active' if $section eq 'trends' %>">
-                    <a href="" title="Trends">
+                    <a href="/trends" title="Trends">
                         <i class="fa fa-line-chart"></i>
                         <span>Trends</span>
                     </a>

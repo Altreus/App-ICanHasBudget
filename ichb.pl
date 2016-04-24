@@ -20,4 +20,12 @@ get '/accounts' => sub {
     );
 };
 
+get '/trends' => sub {
+    my $c = shift;
+    $c->render(
+        template => 'trends',
+        section => 'trends',
+    );
+};
+
 app->start;

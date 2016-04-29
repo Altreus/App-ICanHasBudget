@@ -75,10 +75,6 @@ block-item {
     padding: 4%;
     background: $tertiary-lighter;
 
-    /*
-    border-radius: 1rem;
-    */
-
     border: 0.2rem solid $tertiary-dark;
     margin-bottom: 2rem;
 
@@ -86,6 +82,11 @@ block-item {
         margin: 0;
         line-height: 5.0rem;
         color: $tertiary-dark;
+
+        @include medium {
+            max-width: 70%;
+            display: inline-block;
+        }
     }
 }
 
@@ -171,6 +172,7 @@ div.content {
     height: 4rem;
     width: 4rem;
     text-transform: none;
+    margin-bottom: 0.5rem;
 
     &.long {
         width: auto;
@@ -228,33 +230,25 @@ tfoot td {
     }
 
     .controls {
-        text-align: right;
-        clear: both;
         display: inline-block;
-        float: right;
+        float: left;
+        clear: left;
         
         height: 3.0rem * 1.6;
-        width: 8.6rem;
+        width: 4.8rem * 2;
 
-        position: relative;
+        margin-top: 0.5rem;
 
         @include medium {
+            float: right;
             position: relative;
             top: 0.5rem;
+            width: 4.8rem * 4;
+            text-align: right;
         }
-
-        /*
-        a {
-            position: absolute;
-            top: 40%;
-            left: -0.4rem;
-            margin: -1.5rem 0 0 0;
-        }
-        */
-
     }
 
-    &.open > header .controls a.transactions {
+    &.open > header .controls a.show-transactions {
         @extend button-inverse;
     }
 
@@ -262,19 +256,22 @@ tfoot td {
         color: $tertiary-darker;
         font-family: $number-font;
         font-size: 3.0rem;
-        clear: left;
 
         .earmarked {
             opacity: 0.4;
             font-size: 2.5rem;
         }
 
+        span {
+            display: block;
+            text-align: right;
+        }
+
         margin-bottom: 0;
 
         @include medium {
             height: 1.0rem;
-            margin: 0.5rem 8.8rem 3.0rem 0.5rem;
-            display: block;
+            margin: 0.5rem 0 3.0rem 0.5rem;
             font-size: 3.0rem;
             border: 0.1rem solid $primary-mid;
             position: initial;
@@ -283,6 +280,7 @@ tfoot td {
                 box-sizing: border-box;
                 position: relative;
                 top: 1.0rem;
+                display: inline-block;
             }
         }
     }

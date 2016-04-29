@@ -8,7 +8,8 @@ get '/' => sub {
     my $c = shift;
     $c->render(
         template => 'kitties',
-        section => 'kitties'
+        section => 'kitties',
+        kitties => [],
     );
 };
 

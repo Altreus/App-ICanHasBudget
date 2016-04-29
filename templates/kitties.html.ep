@@ -1,24 +1,35 @@
 % layout 'default';
 % title 'Welcome';
-<section class="u-full-width">
-    <div class="kitty open u-full-width">
-        <header class="used-90">
+
+<% my $kitty_block; $kitty_block = begin %>
+    <% my $kitty = shift; %>
+
+    <div class="kitty twelve columns">
+        <header class="used-<%= $kitty->used_percent %>">
             <h1>
                 <span class="kitty-type">
-                    <i class="fa fa-bitcoin"></i>
+                    <% if ($kitty->type eq 'budget') { %>
+                        <i class="fa fa-bitcoin"></i>
+                    <% } elsif ($kitty->type eq 'target') { %>
+                        <i class="fa fa-crosshairs"></i>
+                    <% } %>
                 </span>
-                Household
+                <%= $kitty->name %>
             </h1>
             <div class="controls">
-                <a href="" class="button transactions">
+                <a href="" class="button show-transactions">
                     <i class="fa fa-exchange"></i>
                 </a>
                 <a href="" class="button add-transaction">
                     <i class="fa fa-plus-square-o"></i>
                 </a>
+                <a href="" class="button edit">
+                    <i class="fa fa-pencil"></i>
+                </a>
             </div>
             <p class="budgeted">
-                <span class="remaining">£200.98</span> <span class="earmarked">£327.57</span>
+                <span class="remaining">£<%= $kitty->balance %></span>
+                <span class="earmarked">£<%= $kitty->budget %></span>
             </p>
         </header>
 
@@ -26,18 +37,20 @@
             <thead>
                 <tr>
                     <th class="data-type-date field-date">Date</th>
-                    <th class="data-type-text field-entity">Entity</th>
+                    <th class="data-type-text field-entity">Partner</th>
                     <th class="data-type-text field-account">Account</th>
                     <th class="data-type-gbp field-income">Income</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class="data-type-date field-date">2016-04-01</td>
-                    <td class="data-type-text field-entity">Marks &amp; Sparks</td>
-                    <td class="data-type-text field-account">Bank Account</td>
-                    <td class="data-type-gbp field-income">£-40</td>
-                </tr>
+                <% for my $txn ($kitty->recent_transactions) { %>
+                    <tr>
+                        <td class="data-type-date field-date"><%= $txn->date->strftime('%Y-%m-%d') %></td>
+                        <td class="data-type-text field-entity"><%= $txn->partner->name %></td>
+                        <td class="data-type-text field-account"><%= $txn->account->name %></td>
+                        <td class="data-type-gbp field-income">£<%= $txn->balance %></td>
+                    </tr>
+                <% } %>
         </table>
 
         <div class="controls">
@@ -46,91 +59,29 @@
             </a>
         </div>
 
-        <div class="row">
-            <div class="kitty twelve columns">
-                <header class="used-60">
-                    <h1>
-                        <span class="kitty-type">
-                            <i class="fa fa-bitcoin"></i>
-                        </span>
-                        Groceries
-                    </h1>
-                    <div class="controls">
-                        <a href="" class="button">
-                            <i class="fa fa-exchange"></i>
-                        </a>
-                        <a href="" class="button add-transaction">
-                            <i class="fa fa-plus-square-o"></i>
-                        </a>
-                    </div>
-                    <p class="budgeted">
-                        <span class="remaining">£200.98</span> <span class="earmarked">£327.57</span>
-                    </p>
-                </header>
-
-                <table class="transactions u-full-width">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Entity</th>
-                            <th>Account</th>
-                            <th>Income</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>2016-04-01</td>
-                            <td>Marks &amp; Sparks</td>
-                            <td>Bank Account</td>
-                            <td>£-40</td>
-                        </tr>
-                    </tbody>
-                </table>
-
+        <% for my $k ($kitty->sub_kitties) { %>
+            <%= $kitty_block->($k) %>
+        <% } %>
+    </div>
+<% end %>
+<section class="u-full-width">
+    <% for my $kitty (@$kitties) { %>
+        <%= $kitty_block->($kitty) %>
+    <% } %>
+    <div class="new-kitty twelve columns">
+        <form action="" method="post">
+            <div class="row">
+                <div class="eight columns">
+                    <input type="text" name="new-kitty-name" class="u-full-width">
+                </div>
+                <div class="two columns switch">
+                    <label for="new-kitty-type">
+                        <input type="checkbox" id="new-kitty-type" value="target">
+                        <span></span>
+                    </label>
+                </div>
             </div>
-            <div class="kitty twelve columns">
-                <header class="used-60">
-                    <h1>
-                        <span class="kitty-type">
-                            <i class="fa fa-bitcoin"></i>
-                        </span>
-                        Cleaning Supplies
-                    </h1>
-                    <div class="controls">
-                        <a href="" class="button">
-                            <i class="fa fa-exchange"></i>
-                        </a>
-                        <a href="" class="button add-transaction">
-                            <i class="fa fa-plus-square-o"></i>
-                        </a>
-                    </div>
-                    <p class="budgeted">
-                        <span class="remaining">£200.98</span> <span class="earmarked">£327.57</span>
-                    </p>
-                </header>
-            </div>
-            <div class="kitty twelve columns">
-                <header class="used-60">
-                    <h1>
-                        <span class="kitty-type">
-                            <i class="fa fa-crosshairs"></i>
-                        </span>
-                        Car & Bike
-                    </h1>
-                    <div class="controls">
-                        <a href="" class="button">
-                            <i class="fa fa-exchange"></i>
-                        </a>
-                        <a href="" class="button add-transaction">
-                            <i class="fa fa-plus-square-o"></i>
-                        </a>
-                    </div>
-                    <p class="budgeted">
-                        <span class="remaining">£200.98</span> <span class="earmarked">£327.57</span>
-                    </p>
-                </header>
-            </div>
-        </div>
+        </form>
     </div>
 </section>
 

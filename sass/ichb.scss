@@ -27,11 +27,6 @@ $warning-secondary: #E66D04;
 
 @mixin battery-icon($icon) {
     &:before {
-        font-family: "FontAwesome";
-        content: $icon;
-        float: right;
-        font-size: 2rem;
-        color: $primary-darker;
     }
 
     @include medium {

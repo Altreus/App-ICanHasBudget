@@ -1,0 +1,89 @@
+=head1 BUDGETING
+
+How to budget with ICHB: transactions and assignments
+
+=head2 Transactions
+
+ICHB is entirely done with transactions. Depending on the circumstances, the
+transaction has different effects. The terms here are explained later.
+
+=head3 User account -> Payee account
+
+You bought something. This transaction will also have a kitty associated with
+it. This decrements the amount of money in the kitty by the same amount.
+
+=head3 Payee account -> User account
+
+You got paid! Or someone gave you money. Either way, the target account now has
+more money in it. You should assign this money to a kitty ASAP. You might do
+this at the same time, by assigning this transaction to a kitty, for example if
+someone paid you back for something.
+
+=head3 User account -> User account
+
+Move money, e.g. from bank account to cash. This doesn't affect distribution of
+money in kitties.
+
+=head3 Nothing -> User account
+
+Represents interest, or some other amalgamation of money in this account.
+
+=head2 Assignments
+
+Assignments are a bit like transactions but they operate on Kitties instead of
+Accounts. There are no third-party Kitties; these are just names for things you
+want to pay for.
+
+=head3 Nothing -> Kitty
+
+Assigns money to the kitty, reducing the amount of money not assigned to any
+kitties. Or, removes it, if the amount is negative.
+
+=head3 Kitty -> Kitty
+
+Reduces one kitty and increases the other. This is helpful so you can see where
+you've had to compromise.
+
+=head2 Accounts
+
+There are two types of accounts: yours, (User) and other people's (Payee).  You
+can have as many of either as you want - at the very simplest you should just
+have the one account that represents the amount of money you have.
+
+You should probably have one User account for each account that you spend money
+out of. This helps you reconcile, which you should do frequently.
+Reconciliation is simply the act of checking your bank account and budget have
+the same available balance.
+
+Payee accounts, there will be many. These are other people. Shops etc. Make as
+many as you want. When you spend money, you create a transaction between one of
+your accounts and someone else's.
+
+There is a special type of account called Petty Cash. A petty cash account does
+not detract from a kitty's budget when you spend money from it. It also does
+not formally keep track of how much money is in it. This allows you to keep
+track of when you spend petty cash, without actually affecting the budget.
+
+The petty cash account does affect the budget in one respect: you can transfer
+money into it. This will reduce the money in the account you transferred it out
+of, at which point you will be required to select a kitty. The total amount in
+all your kitties should always equal the total amount in your accounts.
+
+A cash account works like a normal account. It is common to move money from
+cash to petty cash, because you would maybe have some change left over; at
+which point you would have to decide which kitty loses the capital.
+
+=head2 Kitties
+
+The idea is that you put all your available money into kitties. Then you take
+them out of the kitties when you spend it!
+
+Kitties can be as vague or specific as you like. You may have one for
+groceries, or one for pineapples. You might have one for furniture, or one for
+each chair you intend to buy.
+
+To put money into a kitty you create an assignment; this is either from the
+pool of unassigned money, or from one kitty to another.
+
+To remove money from a kitty, you can either assign it to another kitty, or
+select it as the category when you spend money.

@@ -23,7 +23,7 @@
             </header>
             <nav class="row">
                 <div class="<%= 'active' if $section eq 'kitties' %>">
-                    <a href="/" title="Kitties">
+                    <a href="/kitties" title="Kitties">
                         <i class="fa fa-btc"></i>
                         <span>Kitties</span>
                     </a>

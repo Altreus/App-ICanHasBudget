@@ -6,6 +6,17 @@
 
     <div class="kitty twelve columns">
         <header class="used-<%= $kitty->used_percent %>">
+            <div class="controls">
+                <a href="" class="button edit">
+                    <i class="fa fa-pencil"></i>
+                </a>
+                <a href="" class="button show-transactions">
+                    <i class="fa fa-exchange"></i>
+                </a>
+                <a href="" class="button add-transaction">
+                    <i class="fa fa-plus-square-o"></i>
+                </a>
+            </div>
             <h1>
                 <span class="kitty-type">
                     <% if ($kitty->type eq 'budget') { %>
@@ -16,20 +27,9 @@
                 </span>
                 <%= $kitty->name %>
             </h1>
-            <div class="controls">
-                <a href="" class="button show-transactions">
-                    <i class="fa fa-exchange"></i>
-                </a>
-                <a href="" class="button add-transaction">
-                    <i class="fa fa-plus-square-o"></i>
-                </a>
-                <a href="" class="button edit">
-                    <i class="fa fa-pencil"></i>
-                </a>
-            </div>
             <p class="budgeted">
                 <span class="remaining">£<%= $kitty->balance %></span>
-                <span class="earmarked">£<%= $kitty->budget %></span>
+                <span class="earmarked">£<%= $kitty->capital %></span>
             </p>
         </header>
 
@@ -37,18 +37,18 @@
             <thead>
                 <tr>
                     <th class="data-type-date field-date">Date</th>
-                    <th class="data-type-text field-entity">Partner</th>
-                    <th class="data-type-text field-account">Account</th>
-                    <th class="data-type-gbp field-income">Income</th>
+                    <th class="data-type-text field-entity">To</th>
+                    <th class="data-type-text field-account">From</th>
+                    <th class="data-type-gbp field-income">Amount</th>
                 </tr>
             </thead>
             <tbody>
                 <% for my $txn ($kitty->recent_transactions) { %>
                     <tr>
                         <td class="data-type-date field-date"><%= $txn->date->strftime('%Y-%m-%d') %></td>
-                        <td class="data-type-text field-entity"><%= $txn->partner->name %></td>
-                        <td class="data-type-text field-account"><%= $txn->account->name %></td>
-                        <td class="data-type-gbp field-income">£<%= $txn->balance %></td>
+                        <td class="data-type-text field-entity"><%= $txn->to_account->name %></td>
+                        <td class="data-type-text field-account"><%= $txn->from_account->name %></td>
+                        <td class="data-type-gbp field-income">£<%= $txn->amount %></td>
                     </tr>
                 <% } %>
         </table>
@@ -70,17 +70,17 @@
     <% } %>
     <div class="new-kitty twelve columns">
         <form action="" method="post">
-            <div class="row">
-                <div class="eight columns">
+            <header>
+                <div>
+                    <div class="new-kitty-type switch">
+                        <label for="new-kitty-type">
+                            <input type="checkbox" id="new-kitty-type" value="capital">
+                            <span></span>
+                        </label>
+                    </div>
                     <input type="text" name="new-kitty-name" class="u-full-width">
                 </div>
-                <div class="two columns switch">
-                    <label for="new-kitty-type">
-                        <input type="checkbox" id="new-kitty-type" value="target">
-                        <span></span>
-                    </label>
-                </div>
-            </div>
+            </header>
         </form>
     </div>
 </section>

@@ -36,7 +36,8 @@ post '/kitties' => sub {
     my $c = shift;
     $c->schema->resultset('Kitty')->create({
         name => $c->param('new-kitty-name'),
-        type => $c->param('new-kitty-type') ? 'budget' : 'target'
+        type => $c->param('new-kitty-type') ? 'target' : 'budget',
+        parent_kitty_name => $c->param('parent-kitty') || undef
     });
     $c->redirect_to('/kitties');
 };

@@ -1,6 +1,30 @@
 % layout 'default';
 % title 'Welcome';
 
+<% my $kitty_form = begin %>
+    <% my $parent_id = shift; %>
+    <div class="add-kitty twelve columns">
+        <span class="add-icon">
+            <span><i class="fa fa-plus"></i></span>
+            <span><i class="fa fa-minus"></i></span>
+            <span><i class="fa fa-check"></i></span>
+        </span>
+
+        <form action="" method="post">
+            <div>
+                <div class="new-kitty-type switch">
+                    <label for="new-kitty-type">
+                        <input type="checkbox" id="new-kitty-type" value="capital">
+                        <span></span>
+                    </label>
+                </div>
+                <input type="text" name="new-kitty-name" class="u-full-width">
+                <input type="hidden" name="parent-kitty" value="<%= $parent_id %>">
+            </div>
+        </form>
+    </div>
+<% end %>
+
 <% my $kitty_block; $kitty_block = begin %>
     <% my $kitty = shift; %>
 
@@ -33,55 +57,53 @@
             </p>
         </header>
 
-        <table class="transactions u-full-width">
-            <thead>
-                <tr>
-                    <th class="data-type-date field-date">Date</th>
-                    <th class="data-type-text field-entity">To</th>
-                    <th class="data-type-text field-account">From</th>
-                    <th class="data-type-gbp field-income">Amount</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% for my $txn ($kitty->recent_transactions) { %>
+        <div class="transactions">
+            <table class="transactions u-full-width">
+                <thead>
                     <tr>
-                        <td class="data-type-date field-date"><%= $txn->date->strftime('%Y-%m-%d') %></td>
-                        <td class="data-type-text field-entity"><%= $txn->to_account->name %></td>
-                        <td class="data-type-text field-account"><%= $txn->from_account->name %></td>
-                        <td class="data-type-gbp field-income">£<%= $txn->amount %></td>
+                        <th class="data-type-date field-date">Date</th>
+                        <th class="data-type-text field-entity">To</th>
+                        <th class="data-type-text field-account">From</th>
+                        <th class="data-type-gbp field-income">Amount</th>
                     </tr>
-                <% } %>
-        </table>
+                </thead>
+                <tbody>
+                    <% for my $txn ($kitty->recent_transactions) { %>
+                        <tr>
+                            <td class="data-type-date field-date"><%= $txn->date->strftime('%Y-%m-%d') %></td>
+                            <td class="data-type-text field-entity"><%= $txn->to_account->name %></td>
+                            <td class="data-type-text field-account"><%= $txn->from_account->name %></td>
+                            <td class="data-type-gbp field-income">£<%= $txn->amount %></td>
+                        </tr>
+                    <% } %>
+            </table>
 
-        <div class="controls">
-            <a href="" class="button add-transaction">
-                <i class="fa fa-plus-square-o"></i>
-            </a>
+            <div class="controls">
+                <a href="" class="button add-transaction">
+                    <i class="fa fa-plus-square-o"></i>
+                </a>
+            </div>
         </div>
 
         <% for my $k ($kitty->sub_kitties) { %>
             <%= $kitty_block->($k) %>
         <% } %>
+
+        <%= $kitty_form->($kitty->id) %>
+
     </div>
 <% end %>
+
 <section class="u-full-width">
     <% for my $kitty (@$kitties) { %>
         <%= $kitty_block->($kitty) %>
     <% } %>
-    <div class="new-kitty twelve columns">
-        <form action="" method="post">
-            <header>
-                <div>
-                    <div class="new-kitty-type switch">
-                        <label for="new-kitty-type">
-                            <input type="checkbox" id="new-kitty-type" value="capital">
-                            <span></span>
-                        </label>
-                    </div>
-                    <input type="text" name="new-kitty-name" class="u-full-width">
-                </div>
-            </header>
-        </form>
-    </div>
+    <% unless (@$kitties) { %>
+        <div class="kitty">
+            <h1>No kitties yet!</h1>
+            <p>Add one below</p>
+        </div>
+    <% } %>
+    <%= $kitty_form->() %>
 </section>
 

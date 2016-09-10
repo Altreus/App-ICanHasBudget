@@ -1,0 +1,253 @@
+---
+schema:
+  procedures: {}
+  tables:
+    accounts:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - name
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+      fields:
+        name:
+          data_type: text
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: name
+          order: 1
+          size:
+            - 0
+        type:
+          data_type: text
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: type
+          order: 2
+          size:
+            - 0
+      indices: []
+      name: accounts
+      options: []
+      order: 1
+    kitties:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - name
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+      fields:
+        capital:
+          data_type: int
+          default_value: 0
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: capital
+          order: 3
+          size:
+            - 0
+        name:
+          data_type: text
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: name
+          order: 1
+          size:
+            - 0
+        parent_kitty_name:
+          data_type: text
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: parent_kitty_name
+          order: 4
+          size:
+            - 0
+        type:
+          data_type: text
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: type
+          order: 2
+          size:
+            - 0
+      indices: []
+      name: kitties
+      options: []
+      order: 2
+    transactions:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - id
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+        - deferrable: 1
+          expression: ''
+          fields:
+            - from_account_name
+          match_type: ''
+          name: transactions_fk_from_account_name
+          on_delete: CASCADE
+          on_update: CASCADE
+          options: []
+          reference_fields:
+            - name
+          reference_table: accounts
+          type: FOREIGN KEY
+        - deferrable: 1
+          expression: ''
+          fields:
+            - kitty_name
+          match_type: ''
+          name: transactions_fk_kitty_name
+          on_delete: CASCADE
+          on_update: CASCADE
+          options: []
+          reference_fields:
+            - name
+          reference_table: kitties
+          type: FOREIGN KEY
+        - deferrable: 1
+          expression: ''
+          fields:
+            - to_account_name
+          match_type: ''
+          name: transactions_fk_to_account_name
+          on_delete: CASCADE
+          on_update: CASCADE
+          options: []
+          reference_fields:
+            - name
+          reference_table: accounts
+          type: FOREIGN KEY
+      fields:
+        amount:
+          data_type: int
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: amount
+          order: 2
+          size:
+            - 0
+        date:
+          data_type: date
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: date
+          order: 6
+          size:
+            - 0
+        from_account_name:
+          data_type: text
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: from_account_name
+          order: 4
+          size:
+            - 0
+        id:
+          data_type: int
+          default_value: ~
+          is_auto_increment: 1
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: id
+          order: 1
+          size:
+            - 0
+        kitty_name:
+          data_type: text
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: kitty_name
+          order: 3
+          size:
+            - 0
+        to_account_name:
+          data_type: text
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: to_account_name
+          order: 5
+          size:
+            - 0
+      indices:
+        - fields:
+            - from_account_name
+          name: transactions_idx_from_account_name
+          options: []
+          type: NORMAL
+        - fields:
+            - kitty_name
+          name: transactions_idx_kitty_name
+          options: []
+          type: NORMAL
+        - fields:
+            - to_account_name
+          name: transactions_idx_to_account_name
+          options: []
+          type: NORMAL
+      name: transactions
+      options: []
+      order: 3
+  triggers: {}
+  views: {}
+translator:
+  add_drop_table: 0
+  filename: ~
+  no_comments: 0
+  parser_args:
+    sources:
+      - Account
+      - Kitty
+      - Transaction
+  parser_type: SQL::Translator::Parser::DBIx::Class
+  producer_args: {}
+  producer_type: SQL::Translator::Producer::YAML
+  show_warnings: 0
+  trace: 0
+  version: 0.11021

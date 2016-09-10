@@ -21,6 +21,7 @@ $tertiary-darker: #042519;
 $warning-primary: #3E3009;
 $warning-secondary: #E66D04;
 
+$ease-out: cubic-bezier(0.165, 0.840, 0.440, 1.000);
 @mixin switch($font-size, $width) {
     input {
         display: none !important;
@@ -32,6 +33,7 @@ $warning-secondary: #E66D04;
             display: block;
             background-color: #ccc;
             font-weight: normal;
+            position: relative;
 
             &:after {
                 line-height: $font-size;
@@ -239,10 +241,6 @@ thead {
     }
 }
 
-table {
-    display: none;
-}
-
 tfoot td {
     text-align: right;
     padding: 0 2rem;
@@ -252,10 +250,6 @@ tfoot td {
         color: $secondary-mid;
         font-size: 3.0rem;
     }
-}
-
-.open > table {
-    display: table;
 }
 
 .kitty {
@@ -280,6 +274,7 @@ tfoot td {
         width: 4.8rem * 2;
 
         margin-top: 0.5rem;
+        margin-bottom: 2rem;
 
         @include medium {
             float: right;
@@ -290,8 +285,23 @@ tfoot td {
         }
     }
 
-    &.open > header .controls a.show-transactions {
-        @extend button-inverse;
+    &.open {
+        > header .controls a.show-transactions {
+            @extend button-inverse;
+        }
+
+        > div.transactions {
+            max-height: 1000rem;
+            opacity: 1;
+            transition: opacity 0.5s , max-height 0.3s;
+        }
+    }
+
+    div.transactions {
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        transition: opacity 0.3s $ease-out, max-height 0.3s $ease-out;
     }
 
     p.budgeted {
@@ -449,6 +459,80 @@ tfoot td {
     }
 }
 
+.add-kitty {
+    @extend block-item;
+
+    text-align: center;
+    padding-top: 0;
+    padding-bottom: 0;
+    cursor: pointer;
+    margin-bottom: 0;
+
+    border-style: dashed;
+    border-color: $tertiary-light;
+
+    &.open .add-icon span {
+        top: -5rem;
+        transition: top 0.5s $ease-out;
+    }
+    &.open.changed .add-icon span {
+        top: -10rem;
+        transition: top 0.5s $ease-out;
+    }
+    .add-icon {
+        overflow: hidden;
+        color: $primary-lighter;
+        display: block;
+        height: 5rem;
+
+        span {
+            display: block;
+            font-size: 3rem;
+            line-height: 5rem;
+            position: relative;
+            transition: top 0.5s $ease-out;
+            top: 0;
+        }
+    }
+
+    &.open form {
+        height: 12rem;
+        transition: height 0.5s $ease-out;
+
+        @include medium {
+            height: 7rem;
+        }
+
+    }
+    form {
+        height: 0;
+        overflow: hidden;
+        margin-bottom: 0;
+        transition: height 0.5s $ease-out;
+
+        div {
+            .new-kitty-type {
+                @include switch(5rem, 9rem);
+                @include medium {
+                    display: inline-block;
+                }
+
+                label {
+                    display: inline-block;
+                }
+            }
+
+            input {
+                vertical-align: middle;
+                font-size: 3rem;
+                height: 5rem;
+                width: 80%;
+                font-family: inherit;
+            }
+        }
+    }
+}
+
 .account {
     @extend block-item;
 
@@ -469,24 +553,3 @@ tfoot td {
         font-size: 4rem;
     }
 }
-
-.new-kitty {
-    @extend block-item;
-
-    header div {
-        .new-kitty-type {
-            @include switch(5rem, 9rem);
-            display: inline-block;
-        }
-
-        input {
-            vertical-align: middle;
-            font-size: 3rem;
-            height: 5rem;
-            width: 80%;
-            float: right;
-            font-family: inherit;
-        }
-    }
-}
-

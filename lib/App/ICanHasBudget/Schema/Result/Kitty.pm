@@ -53,7 +53,7 @@ sub used_percent {
 
     return 0 unless $self->capital;
 
-    return int($self->balance / $self->capital * 10) * 10;
+    return 100 - int($self->balance / $self->capital * 10) * 10;
 }
 
 sub recent_transactions {

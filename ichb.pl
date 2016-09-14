@@ -47,7 +47,9 @@ get '/accounts' => sub {
     my $c = shift;
     $c->render(
         template => 'accounts',
-        section => 'accounts'
+        section => 'accounts',
+        accounts => [ $c->schema->resultset('Account')->user->all ],
+        payees => [ $c->schema->resultset('Account')->payees->all ],
     );
 };
 

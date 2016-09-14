@@ -1,122 +1,127 @@
 % layout 'default';
 % title 'Welcome';
-<section class="row">
-    <div class="account twelve columns">
-        <header>
-            <span class="account-balance overbudgeted">£-123456.34</span>
-            <h1>
-                <span class="account-type">
-                    <i class="fa fa-credit-card"></i>
-                </span>
-                Nationwide
-            </h1>
-            <div class="account-features row">
-                <p class="two columns account-type-words">
-                    Bank account
-                </p>
-                <p class="two columns account-contingency">
-                    On-budget
-                </p>
-                <p class="four columns account-recurring-in">
-                    Recurring income: <span class="numeric">£300</span>
-                </p>
-                <p class="four columns account-recurring-in">
-                    Recurring expenditure: <span class="numeric">£300</span>
-                </p>
-            </div>
-            <div class="account-tools">
-                <a href="" class="button long">
-                    <i class="fa fa-exchange"></i>
-                    Transfer
-                </a>
-                <a href="" class="button long">
-                    <i class="fa fa-hand-lizard-o"></i>
-                    Transactions
-                </a>
-                <a href="" class="button long">
-                    <i class="fa fa-gear"></i>
-                    Account settings
-                </a>
-            </div>
-        </header>
-    </div>
-    <div class="account twelve columns">
-        <header>
-            <span class="account-balance">£123456.34</span>
-            <h1>
-                <span class="account-type">
-                    <i class="fa fa-briefcase"></i>
-                </span>
-                Limited Access Saver
-            </h1>
-            <div class="account-features row">
-                <p class="two columns account-type-words">
-                    Savings
-                </p>
-                <p class="two columns account-contingency">
-                    Off-budget
-                </p>
-                <p class="four columns account-recurring-in">
-                    Recurring income: <span class="numeric">£0</span>
-                </p>
-                <p class="four columns account-recurring-in">
-                    Recurring expenditure: <span class="numeric">£0</span>
-                </p>
-            </div>
-            <div class="account-tools">
-                <a href="" class="button long">
-                    <i class="fa fa-exchange"></i>
-                    Transfer
-                </a>
-                <a href="" class="button long">
-                    <i class="fa fa-hand-lizard-o"></i>
-                    Transactions
-                </a>
-                <a href="" class="button long">
-                    <i class="fa fa-gear"></i>
-                    Account settings
-                </a>
-            </div>
-        </header>
-    </div>
-    <div class="account twelve columns">
-        <header>
-            <span class="account-balance">£1234.56</span>
-            <h1>
-                <span class="account-type">
-                    <i class="fa fa-money"></i>
-                </span>
-                Petty Cash
-            </h1>
-            <div class="account-features row">
-                <p class="two columns account-type-words">
-                    Petty Cash
-                </p>
-                <p class="two columns account-contingency">
-                    Special
-                </p>
-                <p class="four columns account-recurring-in">
-                    Recurring income: <span class="numeric">£300</span>
-                </p>
-                <p class="four columns account-recurring-in">
-                    Recurring expenditure: <span class="numeric">£300</span>
-                </p>
-            </div>
-            <div class="account-tools">
-                <a href="" class="button long">
-                    <i class="fa fa-exchange"></i>
-                    Transfer
-                </a>
-                <a href="" class="button long">
-                    <i class="fa fa-hand-lizard-o"></i>
-                    Transactions
-                </a>
-                <a href="" class="button long">
-                    <i class="fa fa-gear"></i>
-                    Account settings
-                </a>
-            </div>
-        </header>
-    </div>
-</section>
 
+<% my $account_form = begin %>
+    <div class="add-account">
+        <span class="add-icon">
+            <span><i class="fa fa-plus"></i></span>
+            <span><i class="fa fa-minus"></i></span>
+            <span><i class="fa fa-check"></i></span>
+        </span>
+
+        <form action="" method="post">
+            <div>
+                <input type="text" name="new-account-name" placeholder="New Account">
+            </div>
+            <div class="checkboxes">
+                <input type="radio"
+                    name="new-account-type"
+                    value="bank"
+                    id="new-account-type-bank"
+                    checked="checked"
+                >
+                <label for="new-account-type-bank">
+                    <i class="fa fa-bank"></i>
+                </label>
+
+                <input type="radio"
+                    name="new-account-type"
+                    value="cash"
+                    id="new-account-type-cash"
+                >
+                <label for="new-account-type-cash">
+                    <i class="fa fa-money"></i>
+                </label>
+
+                <input type="radio"
+                    name="new-account-type"
+                    value="credit"
+                    id="new-account-type-credit"
+                >
+                <label for="new-account-type-credit">
+                    <i class="fa fa-credit-card"></i>
+                </label>
+
+                <input type="radio"
+                    name="new-account-type"
+                    value="savings"
+                    id="new-account-type-savings"
+                >
+                <label for="new-account-type-savings">
+                    <i class="fa fa-briefcase"></i>
+                </label>
+
+                <input type="radio"
+                    name="new-account-type"
+                    value="petty cash"
+                    id="new-account-type-petty-cash"
+                >
+                <label for="new-account-type-petty-cash">
+                    <i class="fa fa-shopping-basket"></i>
+                </label>
+            </div>
+        </form>
+    </div>
+<% end %>
+
+<% my $account_block = begin %>
+    <% my $account = shift; %>
+    <div class="account twelve columns">
+        <header>
+            <% unless ($account->type eq 'petty cash') { %>
+                <span class="account-balance <%= $account->balance < 0 ? 'overbudgeted' : '' %>">
+                    £<%= $account->balance %>
+                </span>
+            <% } %>
+            <h1>
+                <span class="account-type">
+                    <% if ($account->type eq 'bank') { %>
+                        <i class="fa fa-bank"></i>
+                    <% } elsif ($account->type eq 'credit') { %>
+                        <i class="fa fa-credit-card"></i>
+                    <% } elsif ($account->type =~ /cash$/) { %>
+                        <i class="fa fa-money"></i>
+                    <% } elsif ($account->type eq 'savings') { %>
+                        <i class="fa fa-briefcase"></i>
+                    <% } %>
+                </span>
+                <%= $account->name %>
+            </h1>
+            <div class="account-features row">
+                <p class="two columns account-type-words">
+                    <%= $account->type_words %>
+                </p>
+                <% if (0) { %>
+                <p class="four columns account-recurring-in">
+                    Recurring income: <span class="numeric">£300</span>
+                </p>
+                <p class="four columns account-recurring-in">
+                    Recurring expenditure: <span class="numeric">£300</span>
+                </p>
+                <% } %>
+            </div>
+            <div class="account-tools">
+                <a href="" class="button long">
+                    <i class="fa fa-exchange"></i>
+                    Transfer
+                </a>
+                <a href="" class="button long">
+                    <i class="fa fa-hand-lizard-o"></i>
+                    Transactions
+                </a>
+                <a href="" class="button long">
+                    <i class="fa fa-gear"></i>
+                    Account settings
+                </a>
+            </div>
+        </header>
+    </div>
+<% end %>
+
+<section class="u-full-width">
+    <% for my $account (@$accounts) { %>
+        <%= $account_block->($account) %>
+    <% } %>
+
+    <%= $account_form->() %>
+</section>

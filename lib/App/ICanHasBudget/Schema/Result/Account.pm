@@ -36,4 +36,18 @@ sub balance {
     return $_[0]->transactions_in->total - $_[0]->transactions_out->total
 }
 
+our %types_words = (
+    bank => 'Bank Account',
+    savings => 'Savings',
+    cash => 'Cash',
+    'petty cash' => 'Petty Cash',
+    credit => 'Credit Card',
+    payee => 'Payee'
+);
+
+sub type_words {
+    my $self = shift;
+
+    return $types_words{$self->type};
+}
 1;

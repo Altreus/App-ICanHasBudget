@@ -8,10 +8,7 @@ $(function () {
     function showhide_nearest_form(event) {
         var $box = $(this).closest('.add-kitty');
 
-        if ($box.hasClass('changed')) {
-            $box.find('form')[0].submit();
-        }
-        $(this.parentNode).toggleClass('open');
+        $box.toggleClass('open');
     }
 
     function showhide_save_icon(event) {
@@ -31,7 +28,7 @@ $(function () {
         event.preventDefault();
     }
 
-    $('.add-kitty .add-icon').on('click', showhide_nearest_form);
-    $('.add-kitty form input[name=new-kitty-name]').on('input', showhide_save_icon);
+    $('.add-kitty .add-icon, .add-account .add-icon').on('click', showhide_nearest_form);
+    $('.add-kitty form input').on('input', showhide_save_icon);
     $('.show-transactions').on('click', showhide_nearest_transactions);
 });

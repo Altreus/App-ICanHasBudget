@@ -459,7 +459,7 @@ tfoot td {
     }
 }
 
-.add-kitty {
+.add-kitty, .add-account {
     @extend block-item;
 
     text-align: center;
@@ -485,49 +485,87 @@ tfoot td {
         display: block;
         height: 5rem;
 
-        span {
+        span, span button {
             display: block;
             font-size: 3rem;
             line-height: 5rem;
             position: relative;
             transition: top 0.5s $ease-out;
             top: 0;
+            border: 0;
+            background: none;
+        }
+        span button {
+            display: inline;
+            color: $primary-lighter;
         }
     }
 
     &.open form {
-        height: 12rem;
+        height: 17rem;
         transition: height 0.5s $ease-out;
-
-        @include medium {
-            height: 7rem;
-        }
-
     }
     form {
-        height: 0;
+        height: 5rem;
         overflow: hidden;
         margin-bottom: 0;
         transition: height 0.5s $ease-out;
 
         div {
-            .new-kitty-type {
-                @include switch(5rem, 9rem);
-                @include medium {
-                    display: inline-block;
+            display: table;
+            table-layout: fixed;
+            width: 100%;
+
+            &.checkboxes {
+                input {
+                    display: none;
                 }
 
                 label {
-                    display: inline-block;
+                    display: table-cell;
+                    font-size: 3rem;
+                    color: $primary-mid;
+                    cursor: pointer;
+                    border: 2px solid $primary_mid;
+                    border-top: none;
+                    border-right: none;
+                    margin-bottom: 1.5rem;
+
+                    &:last-child {
+                        border-right: 2px solid $primary_mid;
+                    }
+
+                    &:hover {
+                        background-color: $tertiary-light;
+                        color: $tertiary-lighter;
+                    }
+                }
+
+                input:checked + label {
+                    background: $primary-lighter;
                 }
             }
 
             input {
+                display: table-cell;
+                width: 70%;
                 vertical-align: middle;
                 font-size: 3rem;
                 height: 5rem;
-                width: 80%;
                 font-family: inherit;
+                border-radius: 0;
+                border: 2px solid $primary_mid;
+                box-sizing: border-box;
+                box-shadow: inset 2px 2px 12px $tertiary-light;
+                margin: 0;
+
+                + input {
+                    border-left: none;
+                }
+
+                &[type=number] {
+                    width: 30%;
+                }
             }
         }
     }

@@ -4,23 +4,28 @@
 <% my $kitty_form = begin %>
     <% my $parent_id = shift; %>
     <div class="add-kitty twelve columns">
-        <span class="add-icon">
-            <span><i class="fa fa-plus"></i></span>
-            <span><i class="fa fa-minus"></i></span>
-            <span><i class="fa fa-check"></i></span>
-        </span>
-
         <form action="" method="post">
-            <div>
-                <div class="new-kitty-type switch">
-                    <label for="new-kitty-type">
-                        <input type="checkbox" id="new-kitty-type" value="capital">
-                        <span></span>
-                    </label>
-                </div>
-                <input type="text" name="new-kitty-name" class="u-full-width">
-                <input type="hidden" name="parent-kitty" value="<%= $parent_id %>">
+            <span class="add-icon">
+                <span><i class="fa fa-plus"></i></span>
+                <span><i class="fa fa-minus"></i></span>
+                <span><button><i class="fa fa-check"></i></button></span>
+            </span>
+
+            <div class="new-kitty-name">
+                <input type="text" name="new-kitty-name" placeholder="New Kitty">
+                <input type="number" step="1" name="new-kitty-capital" placeholder="£">
             </div>
+            <div class="new-kitty-type checkboxes">
+                <input type="radio" id="new-kitty-type-budget<%= $parent_id %>" name="new-kitty-type" value="budget" checked="checked">
+                <label for="new-kitty-type-budget<%= $parent_id %>">
+                    <i class="fa fa-bitcoin"></i>
+                </label>
+                <input type="radio" id="new-kitty-type-target<%= $parent_id %>" name="new-kitty-type" value="target">
+                <label for="new-kitty-type-target<%= $parent_id %>">
+                    <i class="fa fa-crosshairs"></i>
+                </label>
+            </div>
+            <input type="hidden" name="parent-kitty" value="<%= $parent_id %>">
         </form>
     </div>
 <% end %>

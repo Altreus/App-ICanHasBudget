@@ -40,6 +40,12 @@
                         <span>Trends</span>
                     </a>
                 </div>
+                <div class="<%= 'active' if $section eq 'schedule' %>">
+                    <a href="/schedule" title="Schedule">
+                        <i class="fa fa-calendar"></i>
+                        <span>Schedule</span>
+                    </a>
+                </div>
             </nav>
 
             <div class="content">

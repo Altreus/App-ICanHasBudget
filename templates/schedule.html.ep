@@ -12,6 +12,17 @@
                         "
                     >
                         <span class="mday"><%= $day->day_of_month %></span>
+
+                        <% if (my $events = $events->{$day->strftime('%Y-%m-%d')}) { %>
+                            <div class="events">
+                                <% for my $event (@$events) { %>
+                                    <div class="event">
+                                        <span class="event-title"><%= $event->[0] %></span>
+                                        <span class="event-value"><%= $event->[1] %></span>
+                                    </div>
+                                <% } %>
+                            </div>
+                        <% } %>
                     </div>
                 <% } %>
             </div>

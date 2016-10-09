@@ -597,6 +597,7 @@ tfoot td {
 
 .calendar {
     display: table;
+    table-layout: fixed;
     border-collapse: collapse;
 
     .calendar-week {
@@ -604,9 +605,15 @@ tfoot td {
         .calendar-day {
             display: table-cell;
             border: 0.2rem solid $tertiary-dark;
-            height: (90vw / 7);
+            height: (100vw / 7);
             cursor: pointer;
             position: relative;
+
+            @media (min-width: 960px) {
+                & {
+                    height: (960px/7);
+                }
+            }
 
             &:hover {
                 background: $primary-lighter;
@@ -622,6 +629,25 @@ tfoot td {
                 top: 0.5rem;
                 left: 0.5rem;
                 line-height: 1.5rem;
+            }
+
+            div.events {
+                position: absolute;
+                margin: 0.2em;
+                margin-left: 2em;
+
+                .event {
+                    background: $primary-dark;
+                    color: white;
+                    padding: 0.4em;
+                    line-height: 1;
+                    border-radius: 0.2em;
+                    margin-bottom: 0.2em;
+
+                    .event-title {
+                        display: none;
+                    }
+                }
             }
         }
     }

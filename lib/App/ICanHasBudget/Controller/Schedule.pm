@@ -18,10 +18,18 @@ sub index {
         $working_date = $working_date->plus_days(7);
     }
 
+    my $events = {
+        '2016-10-12' => [
+            [ Payday => "£1234" ],
+            [ "Tory Tax" => "£2000" ]
+        ]
+    };
+
     $self->render(
         template => 'schedule',
         section => 'schedule',
         calendar => $calendar,
+        events => $events,
         first_of_month => $first_of_month,
         last_of_month => $first_of_month->at_last_day_of_month,
         today => $today,

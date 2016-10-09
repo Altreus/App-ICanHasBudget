@@ -7,7 +7,7 @@ use App::ICanHasBudget::Schema;
 
 sub startup {
     my $self = shift;
-    $self->plugin('Config');
+    $self->plugin('Config' => { file => 'ichb.conf' });
 
     $self->helper(schema => sub {
         my $c = shift;

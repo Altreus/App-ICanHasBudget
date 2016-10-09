@@ -590,3 +590,35 @@ tfoot td {
         font-size: 4rem;
     }
 }
+
+.calendar {
+    display: table;
+    border-collapse: collapse;
+
+    .calendar-week {
+        display: table-row;
+        .calendar-day {
+            display: table-cell;
+            border: 0.2rem solid $tertiary-dark;
+            height: (90vw / 7);
+            cursor: pointer;
+            position: relative;
+
+            &:hover {
+                background: $primary-lighter;
+            }
+
+            &.last-month, &.next-month {
+                border-style: dashed;
+                border-color: $tertiary-light;
+            }
+
+            span.mday {
+                position: absolute;
+                top: 0.5rem;
+                left: 0.5rem;
+                line-height: 1.5rem;
+            }
+        }
+    }
+}

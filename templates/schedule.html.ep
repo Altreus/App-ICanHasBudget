@@ -1,0 +1,21 @@
+% layout 'default';
+% title 'Schedule';
+<section class="row">
+    <h1><%= $today->strftime('%B') %></h1>
+    <div class="twelve columns calendar">
+        <% for my $week (@$calendar) { %>
+            <div class="calendar-week">
+                <% for my $day (@$week) { %>
+                    <div class="calendar-day
+                        <% if ($day->is_before($first_of_month)) { %>last-month<% } %>
+                        <% if ($day->is_after($last_of_month)) { %>next-month<% } %>
+                        "
+                    >
+                        <span class="mday"><%= $day->day_of_month %></span>
+                    </div>
+                <% } %>
+            </div>
+        <% } %>
+    </div>
+</section>
+

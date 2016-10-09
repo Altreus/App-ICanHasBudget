@@ -1,6 +1,7 @@
 package App::ICanHasBudget::Controller::Schedule;
 use Mojo::Base qw/Mojolicious::Controller/;
 use Time::Moment;
+use 5.014;
 
 sub index {
     my $self = shift;
@@ -8,7 +9,7 @@ sub index {
     my $calendar = [];
     my $today = Time::Moment->now;
     my $first_of_month = $today->with_day_of_month(1);
-    my $next_month = $today->plus_months(1);
+    my $next_month = $first_of_month->plus_months(1);
     my $first_of_week = $first_of_month->with_day_of_week(1);
 
     my $working_date = $first_of_week;

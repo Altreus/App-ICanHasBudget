@@ -116,7 +116,7 @@ $ease-out: cubic-bezier(0.165, 0.840, 0.440, 1.000);
 }
 
 block-item {
-    padding: 4%;
+    padding: 2%;
     background: $tertiary-lighter;
 
     border: 0.2rem solid $tertiary-dark;
@@ -137,8 +137,8 @@ block-item {
 block-item-main-icon {
     float: left;
     color: $tertiary-light;
-    font-size: 5.0rem;
-    width: 5rem;
+    font-size: 3rem;
+    width: 3rem;
 }
 
 body {
@@ -164,15 +164,12 @@ body {
 }
 
 nav {
+    font-size: 0;
     div {
-        &:first-child {
-            margin-left: 0;
-        }
-        margin-left: 4%;
-        float: left;
-        width: 30.6666666667%;
+        display: inline-block;
+        width: 25%;
         text-align: center;
-        font-size: 2em;
+        font-size: 2rem;
         line-height: 200%;
 
         &.active {
@@ -260,6 +257,8 @@ tfoot td {
     }
 
     h1 {
+        font-size: 3rem;
+
         .kitty-type {
             @extend block-item-main-icon;
         }

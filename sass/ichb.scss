@@ -605,18 +605,24 @@ tfoot td {
         .calendar-day {
             display: table-cell;
             border: 0.2rem solid $tertiary-dark;
+            border-left: 0.01rem solid $tertiary-mid;
+            border-right: 0.01rem solid $tertiary-mid;
             height: (100vw / 7);
-            cursor: pointer;
             position: relative;
+            font-size: 1rem;
+
+            @include small {
+                &{
+                    font-size: 1.6rem;
+                    border: 0.2rem solid $tertiary-dark;
+                }
+            }
+
 
             @media (min-width: 960px) {
                 & {
                     height: (960px/7);
                 }
-            }
-
-            &:hover {
-                background: $primary-lighter;
             }
 
             &.last-month, &.next-month {
@@ -628,24 +634,55 @@ tfoot td {
                 position: absolute;
                 top: 0.5rem;
                 left: 0.5rem;
-                line-height: 1.5rem;
+                line-height: 1rem;
+                padding: 0.5rem;
+
+                @include small {
+                    & {
+                        line-height: 1.5rem;
+                    }
+                }
+
+                &.today {
+                    border-radius: 50%;
+                    background: $secondary-mid;
+                    color: white;
+                }
             }
 
             div.events {
-                position: absolute;
                 margin: 0.2em;
-                margin-left: 2em;
+                margin-top: 3rem;
+                display: block;
+                cursor: pointer;
 
                 .event {
-                    background: $primary-dark;
-                    color: white;
-                    padding: 0.4em;
+                    padding: 0.1em 0.4em;
                     line-height: 1;
                     border-radius: 0.2em;
                     margin-bottom: 0.2em;
+                    background: $primary-dark;
+                    color: white;
 
                     .event-title {
                         display: none;
+                    }
+                }
+            }
+
+            .new-event {
+                color: $primary-lighter;
+                background: none;
+                position: absolute;
+                top: 0.5rem;
+                right: 0.5rem;
+                cursor: pointer;
+                line-height: 1rem;
+                padding: 0.5rem;
+
+                @include small {
+                    & {
+                        line-height: 1.5rem;
                     }
                 }
             }

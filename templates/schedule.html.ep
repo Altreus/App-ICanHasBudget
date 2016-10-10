@@ -11,18 +11,25 @@
                         <% if ($day->is_after($last_of_month)) { %>next-month<% } %>
                         "
                     >
-                        <span class="mday"><%= $day->day_of_month %></span>
+                        <span class="mday
+                            <% if ($day->at_midnight->is_equal($today->at_midnight)) { %>
+                                today
+                            <% } %>">
+                                <%= $day->day_of_month %>
+                        </span>
 
-                        <% if (my $events = $events->{$day->strftime('%Y-%m-%d')}) { %>
-                            <div class="events">
-                                <% for my $event (@$events) { %>
-                                    <div class="event">
-                                        <span class="event-title"><%= $event->[0] %></span>
-                                        <span class="event-value"><%= $event->[1] %></span>
-                                    </div>
-                                <% } %>
-                            </div>
-                        <% } %>
+                        <% my $events = $events->{$day->strftime('%Y-%m-%d')}; %>
+                        <div class="events">
+                            <% for my $event (@$events) { %>
+                                <div class="event">
+                                    <span class="event-title"><%= $event->[0] %></span>
+                                    <span class="event-value"><%= $event->[1] %></span>
+                                </div>
+                            <% } %>
+                        </div>
+                        <div class="new-event">
+                            <i class="fa fa-plus"></i>
+                        </div>
                     </div>
                 <% } %>
             </div>

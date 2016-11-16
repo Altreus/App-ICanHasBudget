@@ -31,6 +31,7 @@ sub startup {
     $r->get('/trends')->to('trends#index');
 
     $r->get('/schedule')->to('schedule#index');
+    $r->post('/schedule')->to('schedule#create');
 
     $r->get('/transaction/add')->to('transactions#form');
 

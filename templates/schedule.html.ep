@@ -37,3 +37,37 @@
     </div>
 </section>
 
+<section>
+    <form action="" method="post">
+        <label>
+            Date
+            <input type="text" name="transaction-date" />
+        </label>
+        <label>
+            Description
+            <input type="text" name="transaction-description" />
+        </label>
+        <label>
+            Amount
+            <input type="number" step="0.01" name="transaction-amount" />
+        </label>
+       <fieldset> 
+            <legend>Recurrence</legend>
+            <label>Recurs
+                <input type="checkbox" name="recurs" value="recurs" />
+            </label>
+            <label>Every
+                <input type="number" step="1" min="1" name="transaction-frequency" />
+            </label>
+            <label>Period
+                <select name="transaction-period">
+                    <option value="days">Days</option>
+                    <option value="weeks">Weeks</option>
+                    <option value="months">Months</option>
+                    <option value="years">Years</option>
+                </select>
+            </label>
+        </fieldset>
+        <button type="submit">Create</button>
+    </form>
+</section>

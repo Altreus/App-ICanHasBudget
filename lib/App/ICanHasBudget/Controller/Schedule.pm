@@ -18,12 +18,8 @@ sub index {
         $working_date = $working_date->plus_days(7);
     }
 
-    my $events = {
-        '2016-10-12' => [
-            [ Payday => "£1234" ],
-            [ "Tory Tax" => "£2000" ]
-        ]
-    };
+    my $events = $self->schema->resultset('ScheduledTransaction')
+        ->between($calendar->[0][0], $calendar->[-1][-1]);
 
     $self->render(
         template => 'schedule',
@@ -34,6 +30,22 @@ sub index {
         last_of_month => $first_of_month->at_last_day_of_month,
         today => $today,
     );
+}
+
+sub create {
+    my $self = shift;
+
+    $self->schema->resultset('ScheduledTransaction')
+        ->create({
+            description => $self->param('transaction-description'),
+            amount => $self->param('transaction-amount') * 10,
+            next_occurrence => $self->param('transaction-date'),
+            $self->param('recurs')
+                ? ( schedule => join ' ', $self->param('transaction-frequency'), $self->param('transaction-period') )
+                : ()
+        });
+
+    $self->redirect_to('/schedule');
 }
 
 1;
